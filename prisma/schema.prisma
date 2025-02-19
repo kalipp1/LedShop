@@ -1,0 +1,88 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id String @id @default(uuid())
+  name String
+  price Int
+  minPrice Int
+  description String
+  categoryId  String
+  imageUrl String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  category    Category @relation(fields: [categoryId], references: [id])
+  orders Order[]
+  orderItems OrderItem[]
+  colorVariants ColorVariant[]
+}
+
+model ColorVariant {
+  id         String   @id @default(uuid())
+  color      String
+  price      Int
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id])
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  items OrderItem[]
+}
+
+model Category {
+  id   String  @id @default(uuid())
+  name String  @unique()
+
+  products Product[]
+}
+
+model Order {
+  id String @id @default(uuid())
+
+  product Product? @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId String?
+
+  client Client? @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  clientId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items OrderItem[]
+}
+
+model OrderItem {
+  id String @id @default(uuid())
+  orderId String
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  productId String
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  colorVariantId String
+  colorVariant ColorVariant @relation(fields: [colorVariantId], references: [id], onDelete: Cascade)
+
+  quantity Int @default(1)
+}
+
+model Client {
+  id String @id @default(uuid())
+  name String
+  email String @unique()
+  phone String?
+  address String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  orders Order[]
+}
