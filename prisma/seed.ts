@@ -9,20 +9,23 @@ function getProducts() {
       price: 50,
       minPrice: 30,
       description: 'Cheap, ideal for beginners with working on lightings',
-      categoryId: "???",
-      imageUrl: "???",
+      categoryId: '1',
+      imageUrl: "/uploads/products/led-strip-main.png",
       colorVariants: [
         {
           color: 'Red',
           price: 50,
+          imageUrl: "/uploads/products/led-strip-red.png"
         },
         {
           color: 'Green',
           price: 50,
+          imageUrl: "/uploads/products/led-strip-green.png"
         },
         {
-          color: 'White',
+          color: 'Blue',
           price: 30,
+          imageUrl: "/uploads/products/led-strip-blue.png"
         },
       ],
     },
@@ -32,16 +35,18 @@ function getProducts() {
         price: 30,
         minPrice: 15,
         description: 'Easy installation, own application on mobile phone',
-        categoryId: "???",
-        imageUrl: "???",
+        categoryId: "2",
+        imageUrl: "/uploads/products/led-bulb-main.jpg",
         colorVariants: [
           {
             color: 'RGB',
             price: 30,
+            imageUrl: "/uploads/products/led-bulb-RGB.png"
           },
           {
             color: 'White',
             price: 15,
+            imageUrl: "/uploads/products/led-bulb-main.png"
           },
         ],
       },
@@ -51,32 +56,38 @@ function getProducts() {
         price: 70,
         minPrice: 55,
         description: 'Plug in and ready, Beatiful color, Big variety',
-        categoryId: "???",
-        imageUrl: "???",
+        categoryId: "3",
+        imageUrl: "/uploads/products/led-neon-stand-main.png",
         colorVariants: [
           {
             color: 'RGB',
             price: 70,
+            imageUrl: "/uploads/products/led-neon-stand-RGB.png"
           },
           {
             color: 'Red',
             price: 60,
+            imageUrl: "/uploads/products/led-neon-stand-red.png"
           },
           {
             color: 'Green',
             price: 60,
+            imageUrl: "/uploads/products/led-neon-stand-green.png"
           },
           {
             color: 'Blue',
             price: 60,
+            imageUrl: "/uploads/products/led-neon-stand-blue.png"
           },
           {
             color: 'White',
             price: 55,
+            imageUrl: "/uploads/products/led-neon-stand-main.png"
           },
           {
             color: 'Custom',
             price: 85,
+            imageUrl: "/uploads/products/led-neon-stand-custom.png"
           },
         ],
       },
@@ -129,6 +140,24 @@ function getClients() {
 }
 
 async function seed() {
+
+    const categories = [
+        { id: '1', name: 'Strips' },
+        { id: '2', name: 'Bulbs' },
+        { id: '3', name: 'Neon Standing Lights' },
+      ];
+
+      await Promise.all(
+        categories.map(async (category) => {
+          const existingCategory = await db.category.findUnique({
+            where: { id: category.id },
+          });
+          if (!existingCategory) {
+            await db.category.create({ data: category });
+          }
+        })
+      );
+    
   await Promise.all(
     getClients().map(async (client) => {
       const existingClient = await db.client.findUnique({
@@ -159,6 +188,7 @@ async function seed() {
                 create: product.colorVariants.map((variant) => ({
                   color: variant.color,
                   price: variant.price,
+                  imageUrl: variant.imageUrl,
                 })),
               },
             },

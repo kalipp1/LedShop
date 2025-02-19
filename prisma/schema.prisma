@@ -33,6 +33,7 @@ model ColorVariant {
   price      Int
   productId  String
   product    Product  @relation(fields: [productId], references: [id])
+  imageUrl   String
 
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt

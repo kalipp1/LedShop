@@ -25,7 +25,7 @@ export class OrdersService {
         })
     }
     public async create(
-        orderData: Omit<Order, 'id' | 'createdAt' | 'updatedAt'> & { client?: { name: string; email: string; address: string } },
+        orderData: Omit<Order, 'id' | 'createdAt' | 'updatedAt'> & { client?: { name: string; email: string; address: string; phone?: string } },
       ): Promise<Order> {
         const { clientId, productId, client: clientData, ...otherData } = orderData;
 
@@ -35,7 +35,13 @@ export class OrdersService {
       if (!clientData?.email || !clientData?.name || !clientData?.address) {
         throw new BadRequestException('Client data is incomplete');
       }
-      const newClient = await this.clientsService.create(clientData);
+      const newClient = await this.clientsService.create({
+        name: clientData.name,
+        email: clientData.email,
+        address: clientData.address,
+        phone: clientData.phone || null,
+      });
+      
       finalClientId = newClient.id;
     } else {
       const existingClient = await this.clientsService.getById(clientId);
