@@ -87,3 +87,12 @@ model Client {
   updatedAt DateTime @updatedAt
   orders Order[]
 }
+
+model Admin {
+  id String @id @default(uuid())
+  login String @unique
+  password String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

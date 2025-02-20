@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 const db = new PrismaClient();
+import * as bcrypt from "bcrypt";
 
 function getProducts() {
   return [
@@ -217,6 +218,20 @@ async function seed() {
       }
     })
   );
+
+  const existingAdmin = await db.admin.findFirst();
+  if (!existingAdmin) {
+    const hashedPassword = await bcrypt.hash("admin123", 10);
+    await db.admin.create({
+      data: {
+        login: "admin",
+        password: hashedPassword,
+      },
+    });
+    console.log("Admin account created! Login: admin, Password: admin123");
+  } else {
+    console.log("Admin already exists, skipping...");
+  };
 }
 
 seed();

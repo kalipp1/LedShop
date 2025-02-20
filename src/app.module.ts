@@ -11,9 +11,11 @@ import { ProductsModule } from './products/products.module';
 import { PrismaService } from './shared/services/prisma.service';
 import { OrdersModule } from './orders/orders.module';
 import { ClientsModule } from './clients/clients.module';
+import { AdminModule } from './admin/admin.module';
+import { AuthMiddleware } from 'utils/authMiddleware';
 
 @Module({
-  imports: [ProductsModule, OrdersModule, ClientsModule],
+  imports: [ProductsModule, OrdersModule, ClientsModule, AdminModule],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
@@ -23,5 +25,9 @@ export class AppModule implements NestModule {
       path: '*',
       method: RequestMethod.ALL,
     });
+    consumer.apply(AuthMiddleware).forRoutes({
+      path: 'admin/*',
+      method: RequestMethod.ALL,
+    })
   }
 }
