@@ -4,6 +4,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { LoggerInterceptor } from './shared/interceptors/logger.interceptor';
 import * as express from 'express';
 import { join } from 'path';
+import 'dotenv/config';
 
 
 async function bootstrap() {
@@ -18,6 +19,6 @@ async function bootstrap() {
 
   app.enableShutdownHooks();
 
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT ?? 8000);
 }
 bootstrap();

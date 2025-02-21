@@ -1,12 +1,12 @@
-import { Transform } from 'class-transformer';
 import {
   IsInt,
   IsNotEmpty,
   IsString,
   Length,
   Min,
-  IsUrl,
   IsUUID,
+  IsArray,
+  ArrayMinSize,
 } from 'class-validator';
 
 export class CreateProductDTO {
@@ -27,7 +27,6 @@ export class CreateProductDTO {
 
   @IsNotEmpty()
   @IsString()
-  @Transform(({ value }) => (Array.isArray(value) ? value.join(', ') : ''))
   description: string;
 
   @IsNotEmpty()
@@ -37,6 +36,10 @@ export class CreateProductDTO {
 
   @IsNotEmpty()
   @IsString()
-  @IsUrl()
   imageUrl: string;
+
+  @IsNotEmpty()
+  @IsArray()
+  @ArrayMinSize(1)
+  colorVariants: { color: string; price: number; imageUrl: string }[];
 }

@@ -1,9 +1,10 @@
-import { Controller, Get, Param, Delete, Post, Body, Put } from '@nestjs/common';
+import { Controller, Get, Param, Delete, Post, Body, Put, UseGuards } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDTO } from './dtos/create-product.dto';
 import { ParseUUIDPipe } from '@nestjs/common';
 import { UpdateProductDTO } from './dtos/update-product.dto';
 import { NotFoundException } from '@nestjs/common';
+import { AdminGuard } from 'src/guards/admin.guard';
 
 @Controller('products')
 export class ProductsController {
@@ -29,6 +30,7 @@ export class ProductsController {
     return prod;
     }
     @Delete('/:id')
+    @UseGuards(AdminGuard)
     async deleteById(@Param('id', new ParseUUIDPipe()) id: string) {
     if (!(await this.productsService.getById(id)))
         throw new NotFoundException('Product not found');
@@ -36,10 +38,12 @@ export class ProductsController {
     return { success: true };
     }   
     @Post('/')
-    create(@Body() productData: CreateProductDTO) {
+    @UseGuards(AdminGuard)
+    async create(@Body() productData: CreateProductDTO) {
         return this.productsService.create(productData);
     }
     @Put('/:id')
+    @UseGuards(AdminGuard)
     async update(
       @Param('id', new ParseUUIDPipe()) id: string,
       @Body() productData: UpdateProductDTO,

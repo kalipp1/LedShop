@@ -10,7 +10,7 @@ function getProducts() {
       price: 50,
       minPrice: 30,
       description: 'Cheap, ideal for beginners with working on lightings',
-      categoryId: '1',
+      categoryId: 'f930e19d-a622-4bdd-8ba6-dbbf98124e21',
       imageUrl: "/uploads/products/led-strip-main.png",
       colorVariants: [
         {
@@ -36,7 +36,7 @@ function getProducts() {
         price: 30,
         minPrice: 15,
         description: 'Easy installation, own application on mobile phone',
-        categoryId: "2",
+        categoryId: "8e5282b1-a7b6-4172-b88e-eddd78e6f62f",
         imageUrl: "/uploads/products/led-bulb-main.jpg",
         colorVariants: [
           {
@@ -57,7 +57,7 @@ function getProducts() {
         price: 70,
         minPrice: 55,
         description: 'Plug in and ready, Beatiful color, Big variety',
-        categoryId: "3",
+        categoryId: "dcd8d654-0b9a-48f0-a19c-9aa9c45c968a",
         imageUrl: "/uploads/products/led-neon-stand-main.png",
         colorVariants: [
           {
@@ -143,9 +143,9 @@ function getClients() {
 async function seed() {
 
     const categories = [
-        { id: '1', name: 'Strips' },
-        { id: '2', name: 'Bulbs' },
-        { id: '3', name: 'Neon Standing Lights' },
+        { id: 'f930e19d-a622-4bdd-8ba6-dbbf98124e21', name: 'Strips' },
+        { id: '8e5282b1-a7b6-4172-b88e-eddd78e6f62f', name: 'Bulbs' },
+        { id: 'dcd8d654-0b9a-48f0-a19c-9aa9c45c968a', name: 'Neon Standing Lights' },
       ];
 
       await Promise.all(
@@ -177,23 +177,23 @@ async function seed() {
       });
       if (!existingProduct) {
         await db.product.create({
-            data: {
-              id: product.id,
-              name: product.name,
-              price: product.price,
-              minPrice: product.minPrice,
-              description: product.description,
-              categoryId: product.categoryId,
-              imageUrl: product.imageUrl,
-              colorVariants: {
-                create: product.colorVariants.map((variant) => ({
-                  color: variant.color,
-                  price: variant.price,
-                  imageUrl: variant.imageUrl,
-                })),
-              },
+          data: {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            minPrice: product.minPrice,
+            description: product.description,
+            categoryId: product.categoryId,
+            imageUrl: product.imageUrl,
+            colorVariants: {
+              create: product.colorVariants.map(variant => ({
+                color: variant.color,
+                price: variant.price,
+                imageUrl: variant.imageUrl,
+              })),
             },
-          });
+          },
+        });
       }
     })
   );

@@ -29,9 +29,19 @@ export class ProductsService {
           where: { id },
         });
       }
-      public create(productData: Omit<Product, 'id' | 'createdAt' | 'updatedAt'>): Promise<Product> {
+      public create(productData: Omit<Product, 'id' | 'createdAt' | 'updatedAt'> & { colorVariants: { color: string; price: number; imageUrl: string }[] }): Promise<Product> {
         return this.prismaService.product.create({
-          data: productData,
+          data: {
+            name: productData.name,
+            price: productData.price,
+            minPrice: productData.minPrice,
+            description: productData.description,
+            categoryId: productData.categoryId,
+            imageUrl: productData.imageUrl,
+            colorVariants: {
+              create: productData.colorVariants,
+            },
+          },
         });
       }
       public updateById(

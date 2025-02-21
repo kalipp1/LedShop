@@ -25,9 +25,12 @@ export class AppModule implements NestModule {
       path: '*',
       method: RequestMethod.ALL,
     });
-    consumer.apply(AuthMiddleware).forRoutes({
-      path: 'admin/*',
-      method: RequestMethod.ALL,
-    })
+    consumer.apply(AuthMiddleware)
+    .exclude({ path: 'admin/login', method: RequestMethod.POST })
+    .forRoutes(
+      { path: 'admin/*', method: RequestMethod.ALL },
+      { path: 'orders/*', method: RequestMethod.ALL },
+      { path: 'products/*', method: RequestMethod.ALL }
+    );
+    }
   }
-}
