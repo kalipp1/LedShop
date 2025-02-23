@@ -8,7 +8,7 @@ import * as jwt from "jsonwebtoken";
 export class AdminService {
   constructor(private readonly prisma: PrismaService) {}
 
-  private revokedTokens = new Set<string>(); // 🔥 Czarna lista tokenów
+  private revokedTokens = new Set<string>();
 
   async login(login: string, password: string): Promise<{ token: string }> {
     const admin: Admin | null = await this.prisma.admin.findUnique({ where: { login } });
@@ -29,12 +29,12 @@ export class AdminService {
 
     const token = jwt.sign({ id: admin.id, login: admin.login }, secretKey, { expiresIn: "1h" });
 
-    console.log("✅ Wygenerowano token:", token);
+    console.log("Wygenerowano token:", token);
     return { token };
   }
 
    logout(token: string): { message: string } {
-    console.log("🚨 Unieważniam token:", token);
+    console.log("Unieważniam token:", token);
     this.revokedTokens.add(token);
     return { message: "Logged out successfully" };
   }
@@ -46,7 +46,7 @@ export class AdminService {
     }
 
     if (this.revokedTokens.has(token)) {
-      console.log("🚨 Token jest unieważniony:", token);
+      console.log("Token jest unieważniony:", token);
       return false;
     }
 
@@ -54,7 +54,7 @@ export class AdminService {
       jwt.verify(token, secretKey);
       return true;
     } catch {
-      console.log("❌ Token jest niepoprawny lub wygasł:", token);
+      console.log("Token jest niepoprawny lub wygasł:", token);
       return false;
     }
   }

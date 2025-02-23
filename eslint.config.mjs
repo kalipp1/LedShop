@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['eslint.config.mjs'],
+    ignores: ['eslint.config.mjs', 'dist/**/*'],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
@@ -17,9 +17,10 @@ export default tseslint.config(
         ...globals.node,
         ...globals.jest,
       },
-      ecmaVersion: 5,
+      ecmaVersion: 2020,
       sourceType: 'module',
       parserOptions: {
+        project: ['./tsconfig.json', "./dist/**/tsconfig.json"],
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },

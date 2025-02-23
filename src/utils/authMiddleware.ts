@@ -1,7 +1,7 @@
 import { Injectable, NestMiddleware, UnauthorizedException } from "@nestjs/common";
 import { Request, Response, NextFunction } from "express";
 import * as jwt from "jsonwebtoken";
-import { AdminService } from "src/admin/admin.service";
+import { AdminService } from '../admin/admin.service';
 
 declare module "express-serve-static-core" {
   interface Request {
@@ -40,7 +40,7 @@ export class AuthMiddleware implements NestMiddleware {
       req.user = { id: decoded.id, login: decoded.login };
       next();
     } catch (error) {
-      console.error("❌ Błąd w AuthMiddleware:", error.message);
+      console.error("Error in AuthMiddleware:", error.message);
       throw new UnauthorizedException("You must be logged in");
     }
   }

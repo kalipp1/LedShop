@@ -5,6 +5,8 @@ import {
   Length,
   Min,
   IsUUID,
+  IsArray,
+  ArrayMinSize,
 } from 'class-validator';
 
 export class UpdateProductDTO {
@@ -35,4 +37,9 @@ export class UpdateProductDTO {
   @IsNotEmpty()
   @IsString()
   imageUrl: string;
+
+  @IsNotEmpty()
+  @IsArray()
+  @ArrayMinSize(1)
+  colorVariants: { color: string; price: number; imageUrl: string }[];
 }

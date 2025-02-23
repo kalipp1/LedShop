@@ -9,16 +9,6 @@ import { AdminGuard } from 'src/guards/admin.guard';
 @Controller('products')
 export class ProductsController {
     constructor(private productsService: ProductsService) {}
-    // @Get('/extended/:id')
-    // async getByIdExtended(@Param('id', new ParseUUIDPipe()) id: string) {
-    // const prod = await this.productsService.getByIdExtended(id);
-    // if (!prod) throw new NotFoundException('Product not found');
-    // return prod;
-    // }
-    // @Get('/extended')
-    // getAllExtended(): any {
-    //     return this.productsService.getAllExtended();   
-    // }
     @Get('/')
     getAll(): any {
         return this.productsService.getAll();   

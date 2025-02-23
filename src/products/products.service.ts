@@ -8,26 +8,32 @@ export class ProductsService {
     public getAll(): Promise<Product[]> {
         return this.prismaService.product.findMany();
       }
-    //   public getAllExtended(): Promise<Product[]> {
-    //     return this.prismaService.product.findMany({
-    //         include: { orders: true }
-    //     });
-    //   }
       public getById(id: Product['id']): Promise<Product | null> {
         return this.prismaService.product.findUnique({
           where: { id },
         });
       }
-    //   public getByIdExtended(id: Product['id']): Promise<Product | null> {
-    //     return this.prismaService.product.findUnique({
-    //         where: { id },
-    //         include: { orders: true }
-    //     });
-    //   }
-      public deleteById(id: Product['id']): Promise<Product> {
-        return this.prismaService.product.delete({
-          where: { id },
-        });
+      public async deleteById(id: Product['id']): Promise<Product> {
+        try {
+          await this.prismaService.orderItem.deleteMany({
+            where: { productId: id },
+          });
+      
+          await this.prismaService.order.deleteMany({
+            where: { productId: id },
+          });
+      
+          await this.prismaService.colorVariant.deleteMany({
+            where: { productId: id },
+          });
+      
+          return await this.prismaService.product.delete({
+            where: { id },
+          });
+        } catch (error) {
+          console.error('Error deleting product: ', error);
+          throw error;
+        }
       }
       public create(productData: Omit<Product, 'id' | 'createdAt' | 'updatedAt'> & { colorVariants: { color: string; price: number; imageUrl: string }[] }): Promise<Product> {
         return this.prismaService.product.create({
@@ -46,11 +52,21 @@ export class ProductsService {
       }
       public updateById(
         id: Product['id'],
-        productData: Omit<Product, 'id' | 'createdAt' | 'updatedAt'>,
+        productData: Omit<Product, 'id' | 'createdAt' | 'updatedAt'> & { colorVariants: { color: string; price: number; imageUrl: string }[] },
       ): Promise<Product> {
         return this.prismaService.product.update({
           where: { id },
-          data: productData,
+          data: {
+            name: productData.name,
+            price: productData.price,
+            minPrice: productData.minPrice,
+            description: productData.description,
+            categoryId: productData.categoryId,
+            imageUrl: productData.imageUrl,
+            colorVariants: {
+              create: productData.colorVariants,
+            },
+          },
         });
       }
 }

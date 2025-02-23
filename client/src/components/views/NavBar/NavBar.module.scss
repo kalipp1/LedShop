@@ -1,0 +1,35 @@
+@import '../../../styles/settings.scss';
+
+.navbar {
+    background-color: gray;
+    color: white;
+    border-radius: 10px;
+    margin: 30px 10px;
+    max-height: 20vh;
+    .logo{
+        color: white;
+        font-size: $base-size * 2;
+        img{
+            max-width: 100px;
+            max-height: 100px;
+        }
+    }
+    .nav {
+        margin-right: 10px;
+        
+    }
+    .nav a.link{
+        text-decoration: none;
+        border: solid 3px blue;
+        border-radius: $radius*4;
+        margin: 5px;
+    }
+    .nav .link:hover{
+        text-decoration: none;
+        background-color: lightblue;
+    }
+    .linkActive {
+        color: white !important;
+        transition: 0.5s;
+    }
+}

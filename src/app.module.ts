@@ -12,7 +12,7 @@ import { PrismaService } from './shared/services/prisma.service';
 import { OrdersModule } from './orders/orders.module';
 import { ClientsModule } from './clients/clients.module';
 import { AdminModule } from './admin/admin.module';
-import { AuthMiddleware } from 'utils/authMiddleware';
+import { AuthMiddleware } from './utils/authMiddleware';
 
 @Module({
   imports: [ProductsModule, OrdersModule, ClientsModule, AdminModule],

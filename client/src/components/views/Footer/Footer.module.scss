@@ -1,0 +1,17 @@
+@import '../../../styles/settings.scss';
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: gray;
+    padding: 10px;
+    h1 {
+        font-size: $base-size;
+        color: white;
+    }
+    a {
+        font-size: $base-size * 1.5;
+        color: white;
+        text-decoration: none;
+    }
+}

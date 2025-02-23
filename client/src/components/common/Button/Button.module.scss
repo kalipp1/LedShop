@@ -1,0 +1,15 @@
+@import '../../../styles/settings.scss';
+
+.button{
+    padding: 10px;
+    font-size: $base-size;
+    color: $color-white;
+    background-color: blue;
+    border: none;
+    border-radius: $radius;
+}
+
+.button:hover{
+    background-color: lightblue;
+    transition: $transition;
+}

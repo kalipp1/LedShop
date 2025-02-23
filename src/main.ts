@@ -7,7 +7,7 @@ import { join } from 'path';
 import 'dotenv/config';
 
 
-async function bootstrap() {
+export async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
@@ -15,7 +15,7 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api');
 
-  app.use('/uploads', express.static(join(__dirname, '..', 'public/uploads')));
+  app.use('/public', express.static(join(__dirname, '..', '/public')));
 
   app.enableShutdownHooks();
 
