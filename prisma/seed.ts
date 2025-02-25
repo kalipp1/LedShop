@@ -37,7 +37,7 @@ function getProducts() {
         minPrice: 15,
         description: 'Easy installation, own application on mobile phone',
         categoryId: "8e5282b1-a7b6-4172-b88e-eddd78e6f62f",
-        imageUrl: "/uploads/products/led-bulb-main.jpg",
+        imageUrl: "/uploads/products/led-bulb-main.png",
         colorVariants: [
           {
             color: 'RGB',

@@ -16,6 +16,7 @@ export async function bootstrap() {
   app.setGlobalPrefix('api');
 
   app.use('/public', express.static(join(__dirname, '..', '/public')));
+  app.use('/uploads', express.static(join(__dirname, '..', 'public/uploads')));
 
   app.enableShutdownHooks();
 

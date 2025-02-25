@@ -3,7 +3,7 @@ import axios from 'axios';
 import initialState from "./initialState";
 
 /* SELECTORS */
-export const getProducts = ({ products }) => products.data;
+export const getAllProducts = ({ products }) => products.data;
 export const getProductById = ({ products }, id) => products.data.find(prod => prod._id === id);
 // export const getProductSearched = ({ advertisements }, searchPhrase) => advertisements.data.filter(ad => ad.title.toLowerCase().includes(searchPhrase.toLowerCase()) || ad.location.toLowerCase().includes(searchPhrase.toLowerCase()) );
 
@@ -22,6 +22,7 @@ export const loadProductsRequest = () => {
         dispatch(startRequest());
         try {
             let res = await axios.get(`${API_URL}/api/products`);
+            console.log("RESPONSE FROM API:", res.data);
             dispatch(loadProducts(res.data));
         } catch (err) {
             console.log(err.message);
