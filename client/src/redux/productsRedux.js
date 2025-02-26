@@ -4,7 +4,7 @@ import initialState from "./initialState";
 
 /* SELECTORS */
 export const getAllProducts = ({ products }) => products.data;
-export const getProductById = ({ products }, id) => products.data.find(prod => prod._id === id);
+export const getProductById = ({ products }, id) => products.data.find(prod => prod.id === id);
 // export const getProductSearched = ({ advertisements }, searchPhrase) => advertisements.data.filter(ad => ad.title.toLowerCase().includes(searchPhrase.toLowerCase()) || ad.location.toLowerCase().includes(searchPhrase.toLowerCase()) );
 
 /* ACTIONS */

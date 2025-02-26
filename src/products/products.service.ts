@@ -15,6 +15,9 @@ export class ProductsService {
       public getById(id: Product['id']): Promise<Product | null> {
         return this.prismaService.product.findUnique({
           where: { id },
+          include: {
+            colorVariants: true,
+          }
         });
       }
       public async deleteById(id: Product['id']): Promise<Product> {

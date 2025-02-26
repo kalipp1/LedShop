@@ -3,7 +3,7 @@
 .button{
     padding: 10px;
     font-size: $base-size;
-    color: $color-white;
+    color: white;
     background-color: blue;
     border: none;
     border-radius: $radius;
@@ -12,4 +12,9 @@
 .button:hover{
     background-color: lightblue;
     transition: $transition;
+}
+
+.addTo {
+    padding: $margin-padding;
+    font-size: $base-size *2;
 }

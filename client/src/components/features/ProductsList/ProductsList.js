@@ -6,6 +6,7 @@ import { Spinner } from "react-bootstrap";
 import Row from 'react-bootstrap/Row';
 import ProductCard from "../ProductCard/ProductCard";
 import ProductCarousel from "../ProductCarousel/ProductCarousel";
+import styles from './ProductsList.module.scss'
 
 const getRandomImages = (products, count = 3) => {
     let allImages = [];
@@ -13,10 +14,6 @@ const getRandomImages = (products, count = 3) => {
     products.forEach(product => {
         if (product.imageUrl) allImages.push(product.imageUrl);
 
-        console.log("Product:", product.name, "Image:", product.imageUrl);
-        console.log("Color Variants:", product.colorVariants);
-
-        
         if (product.colorVariants) {
             product.colorVariants.forEach(variant => {
                 if (variant.imageUrl) allImages.push(variant.imageUrl);
@@ -34,7 +31,6 @@ const ProductsList = () =>{
     const prods = useSelector(getAllProducts);
 
     useEffect(() => {
-        console.log("Dispatching loadProductsRequest...");
         dispatch(loadProductsRequest());
     }, [dispatch]);
 
@@ -42,7 +38,10 @@ const ProductsList = () =>{
 
     return (
         <section>
-            <ProductCarousel images={randomImages} />
+            <div className="d-flex">
+                <ProductCarousel images={randomImages} />
+                <h1 className={styles.getYour}><span className={styles.firstHalf}>Get your light</span> <span className={styles.now}> now!</span></h1>
+            </div>
             {prods.length < 1 && 
                 <Spinner animation="border" role="status" className="d-block mx-auto my-3">
                     <span className="visually-hidden">Loading...</span>

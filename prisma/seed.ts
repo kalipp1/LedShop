@@ -28,6 +28,11 @@ function getProducts() {
           price: 30,
           imageUrl: "/uploads/products/led-strip-blue.png"
         },
+        {
+          color: 'White',
+          price: 30,
+          imageUrl: "/uploads/products/led-strip-main.png"
+        },
       ],
     },
     {

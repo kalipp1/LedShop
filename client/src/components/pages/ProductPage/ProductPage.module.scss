@@ -1,0 +1,73 @@
+@import '../../../styles/settings.scss';
+
+.allPage{
+    color: white;
+}
+.prodSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: gray;
+    padding: 5vh;
+    margin-top: $margin-padding;
+    border-radius: $radius * 3;
+}
+.rightSide{
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+}
+.big{
+    font-weight: bolder;
+    font-size: $base-size * 1.5;
+}
+.bigH1{
+    font-weight: bolder;
+    font-size: $base-size * 3;
+}
+
+.variants {
+    margin-top: $margin-padding;
+    display: flex;
+    flex-direction: row;
+    
+    .variantList {
+        display: flex;
+        gap: 10px;
+        margin-left: 2vh;
+    }
+
+    .variantButton {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    .variantImage {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border: 2px solid transparent;
+        border-radius: 5px;
+        transition: border 0.2s ease-in-out;
+    }
+
+    .selected .variantImage {
+        border: 3px solid white;
+    }
+}
+
+.button {
+    margin-top: $margin-padding * 3;
+}
+
+.toastDark {
+    background-color: #121212 !important;
+    color: white;
+}
