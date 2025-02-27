@@ -20,7 +20,7 @@
     }
     .nav a.link{
         text-decoration: none;
-        border: solid 3px blue;
+        border: solid 1px blue;
         border-radius: $radius*4;
         margin: 5px;
     }
@@ -31,5 +31,17 @@
     .linkActive {
         color: white !important;
         transition: 0.5s;
+    }
+    .cartButton{
+        background-color: gray;
+        margin-left: 5vh;
+        padding: $margin-padding / 2;
+        padding-inline: $margin-padding;
+        border: none;
+        border-radius: $radius *2;
+    }
+    .cartButton:hover{
+        background-color: rgba(0, 0, 0, 0.401);
+        transition: $transition;
     }
 }

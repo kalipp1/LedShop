@@ -1,0 +1,117 @@
+@import '../../../styles/settings.scss';
+
+.cartDropdown {
+    position: absolute;
+    top: 75px;
+    right: 20px;
+    background: #222;
+    color: white;
+    border-radius: 8px;
+    padding: 15px;
+    width: 280px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.empty {
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+    color: gray;
+}
+
+.cartItems {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.cartItem {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+ 
+    .cartItemImage {
+        width: 70px;
+        height: 70px;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+    &:hover .quantityBox,
+        .quantityBox:hover {
+            display: flex;
+        }
+}
+
+.cartItemDetails {
+    flex-grow: 1;
+}
+
+.cartItemName {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.cartItemPrice {
+    font-size: 12px;
+    color: gray;
+}
+
+.cartButton {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    background: #ff5500;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.cartButton:hover {
+    background: gray;
+}
+
+.totalPrice {
+    text-align: center;
+    margin-block: $margin-padding;
+    font-weight: bold;
+    color: #fff;
+
+    span {
+        color: white;
+    }
+}
+
+.quantityBox{
+    display: none;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    z-index: 10;
+}
+.quantityBox button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 3px 8px;
+    border-radius: 3px;
+    transition: background 0.3s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+}

@@ -5,11 +5,14 @@ import { Container } from 'react-bootstrap';
 import { NavLink, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
+import CartDropdown from 'components/features/CartDropdown/CartDropdown';
 
 
 const NavBar = () => {
     const location = useLocation();
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
     return (
         <Navbar className={clsx(styles.navbar)}>
@@ -21,8 +24,12 @@ const NavBar = () => {
             <Nav.Link className={clsx(styles.link, location.pathname==="/"&& styles.linkActive)} as={NavLink} to="/">
                 <FontAwesomeIcon icon={faHouse} /> Home
             </Nav.Link>
+            <button className={styles.cartButton} onClick={() => setIsCartOpen(!isCartOpen)}>
+                <FontAwesomeIcon icon={faShoppingCart} />
+            </button>
           </Nav>
         </Container>
+        {isCartOpen && <CartDropdown onClose={() => setIsCartOpen(false)} />}
       </Navbar>
     );
   };
