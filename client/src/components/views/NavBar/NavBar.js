@@ -24,9 +24,11 @@ const NavBar = () => {
             <Nav.Link className={clsx(styles.link, location.pathname==="/"&& styles.linkActive)} as={NavLink} to="/">
                 <FontAwesomeIcon icon={faHouse} /> Home
             </Nav.Link>
-            <button className={styles.cartButton} onClick={() => setIsCartOpen(!isCartOpen)}>
+            {location.pathname !== "/cart" && (
+              <button className={styles.cartButton} onClick={() => setIsCartOpen(!isCartOpen)}>
                 <FontAwesomeIcon icon={faShoppingCart} />
-            </button>
+              </button>
+            )} 
           </Nav>
         </Container>
         {isCartOpen && <CartDropdown onClose={() => setIsCartOpen(false)} />}

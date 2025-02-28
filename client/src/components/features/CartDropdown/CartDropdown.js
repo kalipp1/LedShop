@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getCart, updateCartQuantity } from '../../../redux/cartRedux';
+import { getCart, updateCartQuantity, removeFromCart } from '../../../redux/cartRedux';
 import { Link } from 'react-router-dom';
 import styles from './CartDropdown.module.scss';
 import { IMGS_URL } from 'config';
@@ -12,14 +12,21 @@ const CartDropdown = ({ onClose }) => {
     const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
     const addQuantity = (item) => {
-        dispatch(updateCartQuantity(item.id, item.quantity + 1));
+        if (item.quantity < 99) {
+            dispatch(updateCartQuantity(item.id, item.variant, item.quantity + 1));
+        }
     }
 
     const lowerQuantity = (item) => {
         if (item.quantity > 1) {
-            dispatch(updateCartQuantity(item.id, item.quantity - 1));
+            dispatch(updateCartQuantity(item.id, item.variant, item.quantity - 1));
         }
     }
+
+    const clearItem = (item) => {   
+        dispatch(removeFromCart(item.id, item.variant));
+    }
+
     const handleMouseLeave = () => {
         onClose();
     };
@@ -41,6 +48,7 @@ const CartDropdown = ({ onClose }) => {
                                 <div className={styles.cartItemDetails}>
                                     <p className={styles.cartItemName}>{item.name}</p>
                                     <p className={styles.cartItemPrice}>${item.price} x {item.quantity}</p>
+                                    <button onClick={() => clearItem(item)} className={styles.deleteProdBtn}>X</button>
                                 </div>
                             </div>
                         ))}

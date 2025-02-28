@@ -1,5 +1,5 @@
 import styles from "./ProductPage.module.scss";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getProductById } from "../../../redux/productsRedux";
 import { Navigate } from "react-router-dom";

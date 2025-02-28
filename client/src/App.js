@@ -5,6 +5,7 @@ import Footer from "./components/views/Footer/Footer";
 import NotFound from "components/pages/NotFound/NotFound";
 import Home from "components/pages/Home/Home";
 import ProductPage from "components/pages/ProductPage/ProductPage";
+import CartPage from "components/pages/CartPage/CartPage";
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products/:id" element={<ProductPage />} />
+            <Route path="/cart" element={<CartPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Container>

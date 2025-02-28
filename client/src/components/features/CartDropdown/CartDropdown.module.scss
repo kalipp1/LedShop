@@ -33,8 +33,8 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
  
     .cartItemImage {
-        width: 70px;
-        height: 70px;
+        width: 80px;
+        height: 80px;
         border-radius: 5px;
         margin-right: 10px;
     }
@@ -42,6 +42,27 @@
         .quantityBox:hover {
             display: flex;
         }
+}
+
+.cartItem:hover{
+    .deleteProdBtn{
+        display: flex;
+    }
+    .deleteProdBtn:hover{
+        background-color: rgba(255, 255, 255, 0.2);
+        transition: $transition-cart-dropdown;
+        border-radius: $radius;
+    }
+}
+
+.deleteProdBtn{
+    display: none;
+    color: red;
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 30%;
+    left: 90%;
 }
 
 .cartItemDetails {
@@ -71,6 +92,7 @@
 
 .cartButton:hover {
     background: gray;
+    transition: $transition-cart-dropdown-button;
 }
 
 .totalPrice {
@@ -87,8 +109,8 @@
 .quantityBox{
     display: none;
     position: absolute;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     top: 50%;
     left: 0;
     transform: translateY(-50%);
@@ -109,7 +131,7 @@
     cursor: pointer;
     padding: 3px 8px;
     border-radius: 3px;
-    transition: background 0.3s ease;
+    transition: $transition-cart-dropdown;
 
     &:hover {
         background: rgba(255, 255, 255, 0.2);
