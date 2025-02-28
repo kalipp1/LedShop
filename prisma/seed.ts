@@ -14,21 +14,25 @@ function getProducts() {
       imageUrl: "/uploads/products/led-strip-main.png",
       colorVariants: [
         {
+          id: 'c2e707b8-ffd0-494b-92cd-c6d2e03e82b4',
           color: 'Red',
           price: 50,
           imageUrl: "/uploads/products/led-strip-red.png"
         },
         {
+          id: 'd8221698-509d-4de5-b6f8-25ee02591dbe',
           color: 'Green',
           price: 50,
           imageUrl: "/uploads/products/led-strip-green.png"
         },
         {
+          id: '74dccd27-6dfb-4bb7-abbe-fb69ebc060c8',
           color: 'Blue',
           price: 30,
           imageUrl: "/uploads/products/led-strip-blue.png"
         },
         {
+          id: '10e7563c-7dbe-4f80-aaa2-f3ec6a771ede',
           color: 'White',
           price: 30,
           imageUrl: "/uploads/products/led-strip-main.png"
@@ -36,67 +40,75 @@ function getProducts() {
       ],
     },
     {
-        id: 'c920c7b9-a67d-4edb-8ce7-e3c9f3889e56',
-        name: 'Led Bulb',
-        price: 30,
-        minPrice: 15,
-        description: 'Easy installation, own application on mobile phone',
-        categoryId: "8e5282b1-a7b6-4172-b88e-eddd78e6f62f",
-        imageUrl: "/uploads/products/led-bulb-main.png",
-        colorVariants: [
-          {
-            color: 'RGB',
-            price: 30,
-            imageUrl: "/uploads/products/led-bulb-RGB.png"
-          },
-          {
-            color: 'White',
-            price: 15,
-            imageUrl: "/uploads/products/led-bulb-main.png"
-          },
-        ],
-      },
-      {
-        id: 'fd105551-0f0d-4a9f-bc41-c559c8a17258',
-        name: 'Led Neon Standing Light',
-        price: 70,
-        minPrice: 55,
-        description: 'Plug in and ready, Beatiful color, Big variety',
-        categoryId: "dcd8d654-0b9a-48f0-a19c-9aa9c45c968a",
-        imageUrl: "/uploads/products/led-neon-stand-main.png",
-        colorVariants: [
-          {
-            color: 'RGB',
-            price: 70,
-            imageUrl: "/uploads/products/led-neon-stand-RGB.png"
-          },
-          {
-            color: 'Red',
-            price: 60,
-            imageUrl: "/uploads/products/led-neon-stand-red.png"
-          },
-          {
-            color: 'Green',
-            price: 60,
-            imageUrl: "/uploads/products/led-neon-stand-green.png"
-          },
-          {
-            color: 'Blue',
-            price: 60,
-            imageUrl: "/uploads/products/led-neon-stand-blue.png"
-          },
-          {
-            color: 'White',
-            price: 55,
-            imageUrl: "/uploads/products/led-neon-stand-main.png"
-          },
-          {
-            color: 'Custom',
-            price: 85,
-            imageUrl: "/uploads/products/led-neon-stand-custom.png"
-          },
-        ],
-      },
+      id: 'c920c7b9-a67d-4edb-8ce7-e3c9f3889e56',
+      name: 'Led Bulb',
+      price: 30,
+      minPrice: 15,
+      description: 'Easy installation, own application on mobile phone',
+      categoryId: "8e5282b1-a7b6-4172-b88e-eddd78e6f62f",
+      imageUrl: "/uploads/products/led-bulb-main.png",
+      colorVariants: [
+        {
+          id: 'e69c5bec-8642-4498-826c-4e74efbdb0e8',
+          color: 'RGB',
+          price: 30,
+          imageUrl: "/uploads/products/led-bulb-RGB.png"
+        },
+        {
+          id: '138fff4e-25fd-4a99-8f38-50ec30557287',
+          color: 'White',
+          price: 15,
+          imageUrl: "/uploads/products/led-bulb-main.png"
+        },
+      ],
+    },
+    {
+      id: 'fd105551-0f0d-4a9f-bc41-c559c8a17258',
+      name: 'Led Neon Standing Light',
+      price: 70,
+      minPrice: 55,
+      description: 'Plug in and ready, Beautiful color, Big variety',
+      categoryId: "dcd8d654-0b9a-48f0-a19c-9aa9c45c968a",
+      imageUrl: "/uploads/products/led-neon-stand-main.png",
+      colorVariants: [
+        {
+          id: 'ca41d86b-4804-4f60-bb35-d4ff21ebb75d',
+          color: 'RGB',
+          price: 70,
+          imageUrl: "/uploads/products/led-neon-stand-RGB.png"
+        },
+        {
+          id: '709e9f34-2514-4c61-b0c6-d3aeb9f98ac9',
+          color: 'Red',
+          price: 60,
+          imageUrl: "/uploads/products/led-neon-stand-red.png"
+        },
+        {
+          id: 'b02ef145-9649-46a4-a7ed-a42cff5b7518',
+          color: 'Green',
+          price: 60,
+          imageUrl: "/uploads/products/led-neon-stand-green.png"
+        },
+        {
+          id: '7e46c361-49e3-45f4-a60b-7a2d8bdee8c1',
+          color: 'Blue',
+          price: 60,
+          imageUrl: "/uploads/products/led-neon-stand-blue.png"
+        },
+        {
+          id: 'a4e3faf9-c93a-40e1-9b7d-be75bde2559f',
+          color: 'White',
+          price: 55,
+          imageUrl: "/uploads/products/led-neon-stand-main.png"
+        },
+        {
+          id: '4b90249d-45c8-442f-bd1e-c2d6751e4be4',
+          color: 'Custom',
+          price: 85,
+          imageUrl: "/uploads/products/led-neon-stand-custom.png"
+        },
+      ],
+    },
   ];
 }
 
@@ -180,8 +192,9 @@ async function seed() {
       const existingProduct = await db.product.findUnique({
         where: { id: product.id },
       });
+  
       if (!existingProduct) {
-        await db.product.create({
+        const createdProduct = await db.product.create({
           data: {
             id: product.id,
             name: product.name,
@@ -190,15 +203,24 @@ async function seed() {
             description: product.description,
             categoryId: product.categoryId,
             imageUrl: product.imageUrl,
-            colorVariants: {
-              create: product.colorVariants.map(variant => ({
+          },
+        });
+  
+        const createdVariants = await Promise.all(
+          product.colorVariants.map(async (variant) => {
+            return await db.colorVariant.create({
+              data: {
+                id: variant.id,
                 color: variant.color,
                 price: variant.price,
                 imageUrl: variant.imageUrl,
-              })),
-            },
-          },
-        });
+                productId: createdProduct.id,
+              },
+            });
+          })
+        );
+  
+        console.log(`Product added: ${createdProduct.name} with ${createdVariants.length} variants.`);
       }
     })
   );

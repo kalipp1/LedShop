@@ -3,6 +3,7 @@ import { Order, Prisma } from '@prisma/client';
 import { PrismaService } from 'src/shared/services/prisma.service';
 import { BadRequestException } from '@nestjs/common';
 import { ClientsService } from 'src/clients/clients.service';
+import { CreateOrderDTO } from './dtos/create-order.dto';
 
 @Injectable()
 export class OrdersService {
@@ -11,64 +12,67 @@ export class OrdersService {
         private clientsService: ClientsService,
     ) {}
     public getAll(): Promise<Order[]> {
-        return this.prismaService.order.findMany({ include: { product: true, client: true } });
-      }
-    public getById(id: Order['id']): Promise<Order | null> {
-        return this.prismaService.order.findUnique({
-            where: { id },
-            include: { product: true, client: true },
-        });
-    }
-    public deleteById(id: Order['id']): Promise<Order> {
-        return this.prismaService.order.delete({
-            where: { id },
-        })
-    }
-    public async create(
-        orderData: Omit<Order, 'id' | 'createdAt' | 'updatedAt'> & { client?: { name: string; email: string; address: string; phone?: string } },
-      ): Promise<Order> {
-        const { clientId, productId, client: clientData, ...otherData } = orderData;
+      return this.prismaService.order.findMany({
+          include: { items: { include: { product: true, colorVariant: true } }, client: true }
+      });
+  }
+  public getById(id: Order['id']): Promise<Order | null> {
+    return this.prismaService.order.findUnique({
+        where: { id },
+        include: { items: { include: { product: true, colorVariant: true } }, client: true },
+    });
+}
+public async deleteById(id: Order['id']): Promise<Order> {
+  return this.prismaService.order.delete({
+      where: { id },
+  });
+}
 
-        let finalClientId = clientId;
-        
-    if (!clientId) {
+public async create(orderData: CreateOrderDTO): Promise<Order> {
+  const { clientId, client: clientData, items } = orderData;
+  let finalClientId = clientId;
+
+  if (!clientId) {
       if (!clientData?.email || !clientData?.name || !clientData?.address) {
-        throw new BadRequestException('Client data is incomplete');
+          throw new BadRequestException('Client data is incomplete');
       }
       const newClient = await this.clientsService.create({
-        name: clientData.name,
-        email: clientData.email,
-        address: clientData.address,
-        phone: clientData.phone || null,
+          name: clientData.name,
+          email: clientData.email,
+          address: clientData.address,
+          phone: clientData.phone || null,
       });
-      
       finalClientId = newClient.id;
-    } else {
+  } else {
       const existingClient = await this.clientsService.getById(clientId);
       if (!existingClient) {
-        throw new BadRequestException("Client doesn't exist");
+          throw new BadRequestException("Client doesn't exist");
       }
-    }
-        if (!finalClientId || !productId) {
-            throw new BadRequestException("clientId and productId cannot be null or undefined");
-        }
-        try {
-          return await this.prismaService.order.create({
-            data: {
-              ...otherData,
-              product: {
-                connect: { id: productId },
-              },
-              client : {
-                connect: { id: finalClientId }
-            }
-            },
-          });
-        } catch (error: unknown) {
-          if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2025'){
-            throw new BadRequestException("Product doesn't exist");
-          }
-          throw error;
-        }
+  }
+
+  if (!items.length) {
+      throw new BadRequestException("Order must contain at least one item.");
+  }
+
+  try {
+      return await this.prismaService.order.create({
+          data: {
+              client: { connect: { id: finalClientId } },
+              items: {
+                  create: items.map(item => ({
+                      product: { connect: { id: item.productId } },
+                      colorVariant: { connect: { id: item.colorVariantId } },
+                      quantity: item.quantity
+                  })),
+              }
+          },
+          include: { items: { include: { product: true, colorVariant: true } }, client: true }
+      });
+  } catch (error: unknown) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === 'P2025') {
+          throw new BadRequestException("One of the products or variants doesn't exist");
       }
+      throw error;
+  }
+}
 }

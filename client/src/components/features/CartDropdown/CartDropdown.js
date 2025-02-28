@@ -13,18 +13,18 @@ const CartDropdown = ({ onClose }) => {
 
     const addQuantity = (item) => {
         if (item.quantity < 99) {
-            dispatch(updateCartQuantity(item.id, item.variant, item.quantity + 1));
+            dispatch(updateCartQuantity(item.id, item.colorVariantId, item.quantity + 1));
         }
     }
 
     const lowerQuantity = (item) => {
         if (item.quantity > 1) {
-            dispatch(updateCartQuantity(item.id, item.variant, item.quantity - 1));
+            dispatch(updateCartQuantity(item.id, item.colorVariantId, item.quantity - 1));
         }
     }
 
     const clearItem = (item) => {   
-        dispatch(removeFromCart(item.id, item.variant));
+        dispatch(removeFromCart(item.id, item.colorVariantId));
     }
 
     const handleMouseLeave = () => {

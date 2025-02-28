@@ -39,19 +39,23 @@ const CartPage = () => {
 
     const addQuantity = (item) => {
       if (item.quantity < 99) {
-        dispatch(updateCartQuantity(item.id, item.variant, item.quantity + 1));
+        dispatch(updateCartQuantity(item.id, item.colorVariantId, item.quantity + 1));
     }
     }
 
     const lowerQuantity = (item) => {
         if (item.quantity > 1) {
-            dispatch(updateCartQuantity(item.id, item.variant, item.quantity - 1));
+            dispatch(updateCartQuantity(item.id, item.colorVariantId, item.quantity - 1));
         }
     }
 
     const clearItem = (item) => {   
-        dispatch(removeFromCart(item.id, item.variant));
+        dispatch(removeFromCart(item.id, item.colorVariantId));
     }
+
+    const goToPayment = () => {
+      navigate('/payment', { state: { totalPrice } });
+    };
 
     if (isRedirecting) {
       return (
@@ -62,7 +66,6 @@ const CartPage = () => {
       );
     }
   
-
   return (
     <div className={styles.allPage}>
       <h1>Cart</h1>
@@ -103,7 +106,9 @@ const CartPage = () => {
               </div>
             </div>
           </div>
-          <Link to="/payment" className={styles.paymentButton}>Go to Payment</Link>
+          <button onClick={goToPayment} className={styles.paymentButton}>
+            Go to Payment
+          </button>
         </div>
       </div>
       <Link to="/" className={styles.continueShopping}>Continue Shopping</Link>

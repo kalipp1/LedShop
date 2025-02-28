@@ -38,6 +38,8 @@
     }
     .cartItems{
         width: 70%;
+        max-height: 500px;
+        overflow: scroll;
     }
     .cartItem{
         display: flex;
@@ -73,6 +75,10 @@
         border-radius: $radius;
         margin-inline: 10px;
         width: 30%;
+    }
+    .deleteProdBtn:hover{
+        background-color: red;
+        transition: $transition-cart-dropdown;
     }
     .priceBox{
         margin-left: $margin-padding*5;

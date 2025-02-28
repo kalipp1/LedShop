@@ -1,0 +1,19 @@
+.allPage{
+    color: white;
+    .finishOrderBox{
+        display: flex;
+        flex-direction: row;
+    }
+    .cartItemImage{
+        width: 150px;
+        height: 150px;
+    }
+    .cartItem{
+        display: flex;
+        flex-direction: row;
+    }
+    .formOrder{
+        z-index: 10;
+    }
+}
+

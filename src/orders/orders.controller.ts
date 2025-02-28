@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Delete, Body, Post, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, Delete, Body, Post, UseGuards, HttpException, HttpStatus } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { NotFoundException } from '@nestjs/common';
 import { ParseUUIDPipe } from '@nestjs/common';
@@ -14,7 +14,6 @@ export class OrdersController {
         return this.ordersService.getAll();   
     }
     @Get('/:id')
-    @UseGuards(AdminGuard)
     async getById(@Param('id', new ParseUUIDPipe()) id: string) {
         const ord = await this.ordersService.getById(id);
         if (!ord) throw new NotFoundException('Order not found');
@@ -22,13 +21,23 @@ export class OrdersController {
     }
     @Delete('/:id')
     async deleteById(@Param('id', new ParseUUIDPipe()) id: string) {
-        if (!(await this.ordersService.getById(id)))
-            throw new NotFoundException('Order not found');
+        const order = await this.ordersService.getById(id);
+        if (!order) throw new NotFoundException('Order not found');
+        
         await this.ordersService.deleteById(id);
-        return { success: true };
+        return { message: 'Order canceled successfully' };
     }
     @Post('/')
-    create(@Body() orderData: CreateOrderDTO) {
-        return this.ordersService.create(orderData);
+    async create(@Body() orderData: CreateOrderDTO) {
+        try {
+            const order = await this.ordersService.create(orderData);
+            return { 
+                message: 'Order placed successfully!', 
+                orderId: order.id
+            };
+        } catch (error) {
+            console.error(error);
+            throw new HttpException('Error creating order', HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

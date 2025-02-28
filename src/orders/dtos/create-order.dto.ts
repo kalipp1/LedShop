@@ -1,27 +1,34 @@
-import {
-  IsNotEmpty,
-  IsString,
-  IsUUID,
-  IsOptional,
-} from 'class-validator';
+import { IsString, IsNotEmpty, IsOptional, IsArray, ValidateNested } from 'class-validator';
+import { Type } from 'class-transformer';
+
+class OrderItemDTO {
+    @IsString()
+    @IsNotEmpty()
+    productId: string;
+
+    @IsString()
+    @IsNotEmpty()
+    colorVariantId: string;
+
+    @IsNotEmpty()
+    quantity: number;
+}
 
 export class CreateOrderDTO {
-  @IsNotEmpty()
-  @IsString()
-  @IsUUID()
-  productId: string;
+    @IsOptional()
+    @IsString()
+    clientId?: string;
 
-  @IsNotEmpty()
-  @IsString()
-  @IsUUID()
-  @IsOptional()
-  clientId: string;
+    @IsOptional()
+    client?: {
+        name: string;
+        email: string;
+        address: string;
+        phone?: string;
+    };
 
-  @IsOptional()
-  client?: {
-    name: string;
-    email: string;
-    phone?: string;
-    address: string;
-  };
+    @IsArray()
+    @ValidateNested({ each: true })
+    @Type(() => OrderItemDTO)
+    items: OrderItemDTO[];
 }

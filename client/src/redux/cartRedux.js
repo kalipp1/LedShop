@@ -9,39 +9,54 @@ const REMOVE_FROM_CART = createActionName('REMOVE_FROM_CART');
 const CLEAR_CART = createActionName('CLEAR_CART');
 const UPDATE_CART_QUANTITY = createActionName('UPDATE_CART_QUANTITY');
 
-export const addToCart = (product) => ({ type: ADD_TO_CART, payload: product });
-export const updateCartQuantity = (productId, variant, quantity) => ({ type: UPDATE_CART_QUANTITY, payload: { productId, variant, quantity }});
-export const removeFromCart = (productId, variant) => ({ type: REMOVE_FROM_CART, payload: { productId, variant } });
+export const addToCart = (product) => ({ type: ADD_TO_CART, payload: { ...product } });
+export const updateCartQuantity = (productId, colorVariantId, quantity) => ({
+    type: UPDATE_CART_QUANTITY, payload: { productId, colorVariantId, quantity }
+});
+export const removeFromCart = (productId, colorVariantId) => ({
+    type: REMOVE_FROM_CART, payload: { productId, colorVariantId }
+});
+export const clearCart = () => ({ type: CLEAR_CART });
 
 const cartReducer = (statePart = initialState.cart, action) => {
     switch (action.type) {
         case ADD_TO_CART:
-            const existingItem = statePart.items.find(item => item.id === action.payload.id && item.variant === action.payload.variant);
+            const existingItem = statePart.items.find(
+                item => item.id === action.payload.id && item.colorVariantId === action.payload.colorVariantId
+            );
             if (existingItem) {
                 return {
                     ...statePart,
-                    items: statePart.items.map(item => item.id === action.payload.id && item.variant === action.payload.variant ? { ...item, quantity: item.quantity + 1 } : item ),
-                    total: statePart.total + action.payload.price
+                    items: statePart.items.map(item =>
+                        item.id === action.payload.id && item.colorVariantId === action.payload.colorVariantId
+                            ? { ...item, quantity: item.quantity + 1 }
+                            : item
+                    ),
                 };
             } else {
                 return {
                     ...statePart,
-                    items: [...statePart.items, { ...action.payload, quantity: 1 }],
-                    total: statePart.total + action.payload.price
+                    items: [...statePart.items, { 
+                        ...action.payload, 
+                        quantity: 1
+                    }],
                 };
             }
         case UPDATE_CART_QUANTITY:
             return {
                 ...statePart,
-                items: statePart.items.map(item => item.id === action.payload.productId && item.variant === action.payload.variant ? { ...item, quantity: Math.max(action.payload.quantity, 1) } : item ),
-                total: statePart.items.reduce((total, item) => item.id === action.payload.productId && item.variant === action.payload.variant ? total + (action.payload.quantity - item.quantity) * item.price : total, statePart.total)
+                items: statePart.items.map(item =>
+                    item.id === action.payload.productId && item.colorVariantId === action.payload.colorVariantId
+                        ? { ...item, quantity: Math.min(Math.max(action.payload.quantity, 1), 99) }
+                        : item
+                )
             };
         case REMOVE_FROM_CART:
-            const itemToRemove = statePart.items.find(item => item.id === action.payload.productId && item.variant === action.payload.variant);
             return {
                 ...statePart,
-                items: statePart.items.filter(item => !(item.id === action.payload.productId && item.variant === action.payload.variant)),
-                total: itemToRemove ? statePart.total - (itemToRemove.price * itemToRemove.quantity) : statePart.total
+                items: statePart.items.filter(item =>
+                    !(item.id === action.payload.productId && item.colorVariantId === action.payload.colorVariantId)
+                )
             };
         case CLEAR_CART:
             return { ...initialState };
