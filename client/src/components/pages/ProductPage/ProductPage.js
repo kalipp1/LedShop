@@ -33,9 +33,10 @@ const ProductPage = () => {
         if (!prod) return; 
         const productToAdd = {
             id: prod.id,
+            colorVariantId: selectedVariant.id,
             name: prod.name,
             price: selectedVariant ? selectedVariant.price : prod.price,
-            image: selectedVariant ? selectedVariant.imageUrl : prod.imageUrl,
+            imageUrl: selectedVariant ? selectedVariant.imageUrl : prod.imageUrl,
             variant: selectedVariant ? selectedVariant.color : "default",
             quantity: 1
         };

@@ -1,19 +1,72 @@
+@import '../../../styles/settings.scss';
+
 .allPage{
     color: white;
     .finishOrderBox{
         display: flex;
         flex-direction: row;
     }
+    .orderDisplayWithTotalPrice{
+        width: 50%;
+    }
+    .orderDisplay{
+        max-height: 400px;
+        overflow: scroll;
+    }
     .cartItemImage{
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
     }
     .cartItem{
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        border-bottom: 1px solid white;
+    }
+    .leftSide{
+        padding-top: 2.5vh;
+    }
+    .cartItemDetails{
+        position: relative;
+        z-index: 2;
+        margin-top: 20px;
+        margin-left: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
     }
     .formOrder{
         z-index: 10;
+    }
+    .goBackToCart{
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            padding: 10px;
+            background: #ff5500;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: bold;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            transition: $transition-cart-dropdown;
+            position: absolute;
+            bottom: 80px;
+            right: 90%;
+        }
+        
+    .goBackToCart:hover {
+        background: gray;
+    }
+    .isNotRequired{
+        color: gray;
+        font-size: 10px;
+        margin: 0;
     }
 }
 

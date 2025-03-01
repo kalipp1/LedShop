@@ -7,6 +7,7 @@ import Home from "components/pages/Home/Home";
 import ProductPage from "components/pages/ProductPage/ProductPage";
 import CartPage from "components/pages/CartPage/CartPage";
 import PaymentPage from "components/pages/PaymentPage/PaymentPage";
+import SuccessPage from "components/pages/SuccessPage/SuccessPage";
 import './App.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/products/:id" element={<ProductPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/payment" element={<PaymentPage />} />
+            <Route path="/success/:orderId" element={<SuccessPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Container>

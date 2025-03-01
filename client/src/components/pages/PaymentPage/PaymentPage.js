@@ -4,11 +4,12 @@ import { useState } from "react";
 import { API_URL } from "../../../config";
 import Spinner from 'react-bootstrap/Spinner';
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getCart, clearCart } from "../../../redux/cartRedux";
 import { IMGS_URL } from "../../../config";
 import { useLocation } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import clsx from "clsx";
 import styles from './PaymentPage.module.scss';
 
@@ -18,6 +19,7 @@ const PaymentPage = () =>{
     const totalPrice = location.state?.totalPrice || 0;
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const cart = useSelector(getCart);
 
@@ -63,11 +65,14 @@ const PaymentPage = () =>{
                 throw new Error("Server error");
             }
 
+            const data = await res.json();
+            if (!data.orderId) throw new Error("Order ID not found");
+
             dispatch(clearCart());
             setStatus("success");
             setTimeout(() => {
-                window.location.href = "/success";
-            }, 2000);
+                navigate(`/success/${data.orderId}`);
+            }, 500); 
         } catch (error) {
             setStatus("serverError");
         }
@@ -79,19 +84,21 @@ const PaymentPage = () =>{
         <div className={styles.allPage}>
             <h1 className="my-4">Finish your order</h1>
             <div className={styles.finishOrderBox}>
-                <div className={styles.orderDisplay}>
-                    {cart.map((item, index) => (
-                        <div key={index} className={styles.cartItem}>
-                            <div className={styles.leftSide}>
-                                <img src={`${IMGS_URL}${item.image}`} alt={item.name} className={styles.cartItemImage} />
+                <div className={styles.orderDisplayWithTotalPrice}>
+                    <div className={styles.orderDisplay}>
+                        {cart.map((item, index) => (
+                            <div key={index} className={styles.cartItem}>
+                                <div className={styles.leftSide}>
+                                    <img src={`${IMGS_URL}${item.imageUrl}`} alt={item.name} className={styles.cartItemImage} />
+                                </div>
+                                <div className={styles.cartItemDetails}>
+                                    <p className={styles.cartItemName}>{item.name}</p>
+                                    <p className={styles.cartItemVariant}>Color: {item.variant}</p>
+                                    <p className={styles.cartItemQuantity}>Quantity: {item.quantity}</p>
+                                </div>
                             </div>
-                            <div className={styles.cartItemDetails}>
-                                <p className={styles.cartItemName}>{item.name}</p>
-                                <p className={styles.cartItemVariant}>Color: {item.variant}</p>
-                                <p className={styles.cartItemQuantity}>Quantity: {item.quantity}</p>
-                            </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                     <p className={styles.cartTotalPrice}>Total to pay: ${totalPrice.toFixed(2)}</p>
                 </div>
             <Form className={clsx("col-12 col-sm-3 mx-auto", styles.formOrder)} onSubmit={handleSubmit}>
@@ -131,6 +138,7 @@ const PaymentPage = () =>{
 
                 <Form.Group className="mb-3" controlId="formPhone">
                     <Form.Label>Phone</Form.Label>
+                    <p className={styles.isNotRequired}>*Phone number is not required*</p>
                     <Form.Control type="text" value={phone} onChange={e => setPhone(e.target.value)} placeholder="Enter phone" />
                 </Form.Group>
 
@@ -144,6 +152,7 @@ const PaymentPage = () =>{
                 </Button>
             </Form>
             </div>
+            <Link to="/cart" className={styles.goBackToCart}>Go back</Link>
         </div>
     )
 }

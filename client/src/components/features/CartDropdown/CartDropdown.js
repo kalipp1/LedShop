@@ -39,7 +39,7 @@ const CartDropdown = ({ onClose }) => {
                     <div className={styles.cartItems}>
                         {cart.map((item, index) => (
                             <div key={index} className={styles.cartItem}>
-                                <img src={`${IMGS_URL}${item.image}`} alt={item.name} className={styles.cartItemImage} />
+                                <img src={`${IMGS_URL}${item.imageUrl}`} alt={item.name} className={styles.cartItemImage} />
                                 <div className={styles.quantityBox}>
                                     <button onClick={() => addQuantity(item)}>+</button>
                                     {item.quantity}

@@ -61,8 +61,13 @@
     .cartItemDetails{
         position: relative;
         z-index: 2;
-        margin-top: $margin-padding;
-        margin-left: $margin-padding*4;
+        margin-top: 20px;
+        margin-left: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
     }
     .cartItemName{
         font-size: 30px;
@@ -74,7 +79,7 @@
         border: none;
         border-radius: $radius;
         margin-inline: 10px;
-        width: 30%;
+        width: 30px;
     }
     .deleteProdBtn:hover{
         background-color: red;

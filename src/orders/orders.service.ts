@@ -36,13 +36,20 @@ public async create(orderData: CreateOrderDTO): Promise<Order> {
       if (!clientData?.email || !clientData?.name || !clientData?.address) {
           throw new BadRequestException('Client data is incomplete');
       }
-      const newClient = await this.clientsService.create({
+
+      let existingClient = await this.prismaService.client.findUnique({
+        where: { email: clientData.email },
+      });
+
+      if (!existingClient) {
+        existingClient = await this.clientsService.create({
           name: clientData.name,
           email: clientData.email,
           address: clientData.address,
           phone: clientData.phone || null,
       });
-      finalClientId = newClient.id;
+      }
+      finalClientId = existingClient.id;
   } else {
       const existingClient = await this.clientsService.getById(clientId);
       if (!existingClient) {

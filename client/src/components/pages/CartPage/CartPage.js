@@ -74,7 +74,7 @@ const CartPage = () => {
         {cart.map((item, index) => (
           <div key={index} className={styles.cartItem}>
             <div className={styles.leftSide}>
-              <img src={`${IMGS_URL}${item.image}`} alt={item.name} className={styles.cartItemImage} />
+              <img src={`${IMGS_URL}${item.imageUrl}`} alt={item.name} className={styles.cartItemImage} />
               <div className={styles.quantityBox}>
                 <button className={styles.buttonQuantity} onClick={() => addQuantity(item)}>+</button>
                 {item.quantity}

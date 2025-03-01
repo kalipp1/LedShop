@@ -9,7 +9,7 @@ const REMOVE_FROM_CART = createActionName('REMOVE_FROM_CART');
 const CLEAR_CART = createActionName('CLEAR_CART');
 const UPDATE_CART_QUANTITY = createActionName('UPDATE_CART_QUANTITY');
 
-export const addToCart = (product) => ({ type: ADD_TO_CART, payload: { ...product } });
+export const addToCart = (product) => ({ type: ADD_TO_CART, payload: { ...product, image: product.colorVariantImage } });
 export const updateCartQuantity = (productId, colorVariantId, quantity) => ({
     type: UPDATE_CART_QUANTITY, payload: { productId, colorVariantId, quantity }
 });
@@ -38,7 +38,8 @@ const cartReducer = (statePart = initialState.cart, action) => {
                     ...statePart,
                     items: [...statePart.items, { 
                         ...action.payload, 
-                        quantity: 1
+                        quantity: 1,
+                        image: action.payload.colorVariantImage
                     }],
                 };
             }
@@ -59,7 +60,7 @@ const cartReducer = (statePart = initialState.cart, action) => {
                 )
             };
         case CLEAR_CART:
-            return { ...initialState };
+            return { ...statePart, items: [] };
         default:
             return statePart;
     }
