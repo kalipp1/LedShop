@@ -1,0 +1,67 @@
+@import '../../../styles/settings.scss';
+
+.cancelOrderContainer{
+    color: white;
+    .formOrder{
+        margin-top: 10vh;
+    }
+    .button{
+        display: block;
+        text-align: center;
+        margin-block: 5vh;
+        padding: 10px;
+        background: #ff5500;
+        color: white;
+        font-size: 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        transition: $transition-cart-dropdown;
+        border: none;
+    }
+    .button:hover {
+        background: gray;
+    }
+    .confirmationBox{
+        margin-block: 10vh;
+        margin-inline: 40vh;
+    }
+    .itemsList{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        max-width: 100%;
+        gap: 5vh;
+        justify-content: center;
+    }
+    .itemImage{
+        width: 200px;
+        height: 200px;
+        border-radius: $radius*4;
+    }
+    .buttonContainer{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+    }
+    .bolder{
+        font-weight: bolder;
+    }
+    .itemDetails{
+        margin-top: 2vh;
+        .prodName{
+            font-size: 20px;
+            font-weight: bolder;
+        }
+        p{
+            font-size: 15px;
+            margin: 0;
+        }
+    }
+    .totalPrice{
+        margin-top: $margin-padding * 2;
+    }
+}

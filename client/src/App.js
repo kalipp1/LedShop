@@ -8,6 +8,7 @@ import ProductPage from "components/pages/ProductPage/ProductPage";
 import CartPage from "components/pages/CartPage/CartPage";
 import PaymentPage from "components/pages/PaymentPage/PaymentPage";
 import SuccessPage from "components/pages/SuccessPage/SuccessPage";
+import CancelOrderPage from "components/pages/CancelOrderPage/CancelOrderPage";
 import './App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/success/:orderId" element={<SuccessPage />} />
+            <Route path="/cancelOrder" element={<CancelOrderPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Container>

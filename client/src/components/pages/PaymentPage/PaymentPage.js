@@ -27,7 +27,7 @@ const PaymentPage = () =>{
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
-    const [status, setStatus] = useState(null);
+    const [status, setStatus] = useState(null); // success, loading, clientError, serverError
 
     const handleSubmit = async (e) => {
         e.preventDefault();

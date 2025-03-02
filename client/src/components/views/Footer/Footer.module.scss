@@ -14,4 +14,21 @@
         color: white;
         text-decoration: none;
     }
+    .button{
+        text-align: center;
+        margin: $margin-padding;
+        padding: 10px;
+        background: #ff5500;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 10px;
+        font-weight: bold;
+        width: fit-content;
+        transition: $transition-cart-dropdown;
+        border: none;
+    }
+    .button:hover {
+        background: rgb(42, 42, 42);
+    }
 }

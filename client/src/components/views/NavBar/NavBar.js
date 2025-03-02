@@ -16,7 +16,7 @@ const NavBar = () => {
 
     const isSuccessPage = matchPath("/success/:orderId", location.pathname);
 
-    const isOnCartOrPaymentPageOrSuccessPage = location.pathname === "/cart" || location.pathname === "/payment" || isSuccessPage !== null;;
+    const isOnCartOrPaymentPageOrSuccessPage = location.pathname === "/cart" || location.pathname === "/payment" || isSuccessPage !== null;
 
     return (
         <Navbar className={clsx(styles.navbar)}>

@@ -7,13 +7,11 @@ export class AdminGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
     const req = context.switchToHttp().getRequest<Request>();
 
-    // 🔥 Sprawdźmy, czy `req.user` już istnieje
     if (!req.user) {
-      console.log("⚠ `req.user` jest pusty – próbujemy go dodać z tokena.");
       const authHeader = req.headers.authorization;
 
       if (!authHeader || !authHeader.startsWith('Bearer ')) {
-        console.error("❌ Brak tokena lub zły format");
+        console.error("No token or wrong form");
         throw new UnauthorizedException('You must be logged in');
       }
 
@@ -30,15 +28,13 @@ export class AdminGuard implements CanActivate {
           throw new UnauthorizedException('Invalid session data');
         }
 
-        // 🔥 Ustawiamy `req.user`, jeśli go nie było
         req.user = { id: decoded.id, login: decoded.login };
       } catch (error) {
-        console.error("❌ Błąd dekodowania tokena:", error.message);
+        console.error("Error decoding token:", error.message);
         throw new UnauthorizedException('Invalid token');
       }
     }
 
-    // 🔥 Teraz `req.user` powinien już istnieć!
     if (!req.user) {
       throw new UnauthorizedException('You must be logged in');
     }

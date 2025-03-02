@@ -5,7 +5,6 @@ import initialState from "./initialState";
 /* SELECTORS */
 export const getOrders = ({ orders }) => orders.data;
 export const getOrderById = ({ orders }, id) => orders.data.find(ord => ord.id === id);
-// export const getProductSearched = ({ advertisements }, searchPhrase) => advertisements.data.filter(ad => ad.title.toLowerCase().includes(searchPhrase.toLowerCase()) || ad.location.toLowerCase().includes(searchPhrase.toLowerCase()) );
 
 /* ACTIONS */
 const reducerName = 'orders';
@@ -23,6 +22,17 @@ export const createOrder = (order) => ({ type: CREATE_ORDER, payload: order });
 export const getOrder = (order) => ({ type: GET_ORDER, payload: order });
 export const cancelOrder = (orderId) => ({ type: CANCEL_ORDER, payload: orderId });
 
+export const loadOrderByIdRequest = (orderId) => async (dispatch) => {
+    try {
+        let res = await axios.get(`${API_URL}/api/orders/${orderId}`, {
+            headers: { "Content-Type": "application/json" }
+        });
+        dispatch(getOrder(res.data));
+    } catch (err) {
+        console.log("Error loading order:", err.message);
+    }
+};
+
 export const createOrderRequest = (orderData) => async (dispatch) => {
     try {
         dispatch(startRequest());
@@ -37,7 +47,10 @@ export const loadOrdersRequest = () => {
     return async dispatch => {
         dispatch(startRequest());
         try {
-            let res = await axios.get(`${API_URL}/api/orders`);
+            const token = localStorage.getItem('token');
+            let res = await axios.get(`${API_URL}/api/orders`, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
             dispatch(loadOrders(res.data));
         } catch (err) {
             console.log(err.message);
@@ -47,10 +60,12 @@ export const loadOrdersRequest = () => {
 
 export const cancelOrderRequest = (orderId) => async (dispatch) => {
     try {
-        await axios.delete(`${API_URL}/api/orders/${orderId}`);
+        await axios.delete(`${API_URL}/api/orders/${orderId}`, {
+            headers: { "Content-Type": "application/json" }
+        });
         dispatch(cancelOrder(orderId));
     } catch (error) {
-        console.error("Error canceling order:", error);
+        console.error("Error canceling order:", error.response ? error.response.data : error.message);
     }
 };
 
