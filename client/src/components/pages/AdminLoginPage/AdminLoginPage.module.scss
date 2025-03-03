@@ -1,0 +1,24 @@
+@import '../../../styles/settings.scss';
+
+.adminLoginContainer {
+    max-width: 400px;
+    margin: 10vh auto;
+    padding: $margin-padding;
+    background: #2c2c2c;
+    border-radius: $radius*2;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.adminLoginForm {
+    margin-top: $margin-padding;
+    .formInput{
+        margin-block: $margin-padding/2;
+    }
+}
+
+.button {
+    width: 100%;
+    margin-top: 2vh;
+}

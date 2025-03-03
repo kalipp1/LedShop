@@ -31,4 +31,21 @@
     .button:hover {
         background: rgb(42, 42, 42);
     }
+    .buttonAdmin{
+        text-align: center;
+        margin: $margin-padding;
+        padding: 10px;
+        background: rgb(214, 214, 214);
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 10px;
+        font-weight: bold;
+        width: fit-content;
+        transition: $transition-cart-dropdown;
+        border: none;
+    }
+    .buttonAdmin:hover {
+        background: rgb(42, 42, 42);
+    }
 }

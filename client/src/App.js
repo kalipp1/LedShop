@@ -9,6 +9,9 @@ import CartPage from "components/pages/CartPage/CartPage";
 import PaymentPage from "components/pages/PaymentPage/PaymentPage";
 import SuccessPage from "components/pages/SuccessPage/SuccessPage";
 import CancelOrderPage from "components/pages/CancelOrderPage/CancelOrderPage";
+import AdminLoginPage from "components/pages/AdminLoginPage/AdminLoginPage";
+import AdminDashboardPage from "components/pages/AdminDashboardPage/AdminDashboardPage";
+import AdminOrdersPage from "components/pages/AdminOrdersPage/AdminOrdersPage";
 import './App.css';
 
 function App() {
@@ -23,6 +26,9 @@ function App() {
             <Route path="/payment" element={<PaymentPage />} />
             <Route path="/success/:orderId" element={<SuccessPage />} />
             <Route path="/cancelOrder" element={<CancelOrderPage />} />
+            <Route path="/admin/login" element={<AdminLoginPage />} />
+            <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+            <Route path="/admin/orders" element={<AdminOrdersPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Container>

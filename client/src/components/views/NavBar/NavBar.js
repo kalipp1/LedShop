@@ -16,7 +16,7 @@ const NavBar = () => {
 
     const isSuccessPage = matchPath("/success/:orderId", location.pathname);
 
-    const isOnCartOrPaymentPageOrSuccessPage = location.pathname === "/cart" || location.pathname === "/payment" || isSuccessPage !== null;
+    const isOnCartOrPaymentPageOrSuccessPageOrAdmin = location.pathname === "/cart" || location.pathname === "/payment" || location.pathname.startsWith("/admin") || isSuccessPage !== null;
 
     return (
         <Navbar className={clsx(styles.navbar)}>
@@ -28,7 +28,7 @@ const NavBar = () => {
             <Nav.Link className={clsx(styles.link, location.pathname==="/"&& styles.linkActive)} as={NavLink} to="/">
                 <FontAwesomeIcon icon={faHouse} /> Home
             </Nav.Link>
-            {!isOnCartOrPaymentPageOrSuccessPage && (
+            {!isOnCartOrPaymentPageOrSuccessPageOrAdmin && (
               <button className={styles.cartButton} onClick={() => setIsCartOpen(!isCartOpen)}>
                 <FontAwesomeIcon icon={faShoppingCart} />
               </button>
