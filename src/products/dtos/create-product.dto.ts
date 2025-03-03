@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import {
   IsInt,
   IsNotEmpty,
@@ -7,7 +8,23 @@ import {
   IsUUID,
   IsArray,
   ArrayMinSize,
+  ValidateNested,
 } from 'class-validator';
+
+class ColorVariantDTO {
+  @IsNotEmpty()
+  @IsString()
+  color: string;
+
+  @IsNotEmpty()
+  @IsInt()
+  @Min(0)
+  price: number;
+
+  @IsNotEmpty()
+  @IsString()
+  imageUrl: string;
+}
 
 export class CreateProductDTO {
   @IsNotEmpty()
@@ -41,5 +58,7 @@ export class CreateProductDTO {
   @IsNotEmpty()
   @IsArray()
   @ArrayMinSize(1)
-  colorVariants: { color: string; price: number; imageUrl: string }[];
+  @ValidateNested({ each: true })
+  @Type(() => ColorVariantDTO) 
+  colorVariants: ColorVariantDTO[];
 }

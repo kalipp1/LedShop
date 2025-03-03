@@ -163,6 +163,7 @@ async function seed() {
         { id: 'f930e19d-a622-4bdd-8ba6-dbbf98124e21', name: 'Strips' },
         { id: '8e5282b1-a7b6-4172-b88e-eddd78e6f62f', name: 'Bulbs' },
         { id: 'dcd8d654-0b9a-48f0-a19c-9aa9c45c968a', name: 'Neon Standing Lights' },
+        { id: '1712608e-efee-4f1d-8750-ab841bc6a938', name: 'Led Hex Panels' },
       ];
 
       await Promise.all(

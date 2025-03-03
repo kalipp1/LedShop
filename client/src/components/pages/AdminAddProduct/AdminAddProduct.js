@@ -13,27 +13,27 @@ const AdminAddProduct = () => {
     const [description, setDescription] = useState("");
     const [categoryId, setCategoryId] = useState("");
     const [image, setImage] = useState(null);
-    const [variants, setVariants] = useState([]);
+    const [colorVariants, setColorVariants] = useState([]);
     const [status, setStatus] = useState(null);
 
     const addVariant = () => {
-        setVariants([...variants, { color: "", price: "", image: null }]);
+        setColorVariants([...colorVariants, { color: "", price: "", image: null }]);
     };
 
     const updateVariant = (index, field, value) => {
-        const updatedVariants = [...variants];
+        const updatedVariants = [...colorVariants];
         updatedVariants[index][field] = value;
-        setVariants(updatedVariants);
+        setColorVariants(updatedVariants);
     };
 
     const removeVariant = (index) => {
-        setVariants(variants.filter((_, i) => i !== index));
+        setColorVariants(colorVariants.filter((_, i) => i !== index));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        if (!name || !price || !minPrice || !description || !categoryId || !image || variants.some(v => !v.color || !v.price || !v.image)) {
+        if (!name || !price || !minPrice || !description || !categoryId || !image || colorVariants.some(v => !v.color || !v.price || !v.image)) {
             setStatus("clientError");
             return;
         }
@@ -46,14 +46,23 @@ const AdminAddProduct = () => {
         formData.append("categoryId", categoryId);
         formData.append("image", image);
 
-        variants.forEach((variant, index) => {
-            formData.append(`variants[${index}][color]`, variant.color);
-            formData.append(`variants[${index}][price]`, variant.price);
-            formData.append(`variants[${index}][image]`, variant.image);
+        const colorVariantsData = colorVariants.map(v => ({
+            color: v.color,
+            price: Number(v.price)
+        }));
+        formData.append("colorVariants", JSON.stringify(colorVariantsData));
+
+        colorVariants.forEach(variant => {
+            formData.append("variantImages", variant.image);
         });
 
         try {
             const token = localStorage.getItem("token");
+            console.log("📡 Wysyłam request z tokenem:", token);
+            console.log("📦 Wysyłam FormData:");
+            for (const pair of formData.entries()) {
+                console.log(pair[0], pair[1]);
+            }
             const res = await fetch(`${API_URL}/api/products`, {
                 method: "POST",
                 headers: { Authorization: `Bearer ${token}` },
@@ -99,7 +108,7 @@ const AdminAddProduct = () => {
                 <input type="file" onChange={(e) => setImage(e.target.files[0])} />
 
                 <h2>Color Variants</h2>
-                {variants.map((variant, index) => (
+                {colorVariants.map((variant, index) => (
                     <div key={index} className={styles.variantBox}>
                         <label>Color:</label>
                         <input type="text" value={variant.color} onChange={(e) => updateVariant(index, "color", e.target.value)} />

@@ -43,6 +43,8 @@ export class ProductsService {
         }
       }
       public create(productData: Omit<Product, 'id' | 'createdAt' | 'updatedAt'> & { colorVariants: { color: string; price: number; imageUrl: string }[] }): Promise<Product> {
+        console.log("🔹 Dane otrzymane w backendzie:", productData);
+        
         return this.prismaService.product.create({
           data: {
             name: productData.name,
