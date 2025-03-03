@@ -1,0 +1,38 @@
+@import '../../../styles/settings.scss';
+
+.dashboardContainer {
+    max-width: 800px;
+    margin: 10vh auto;
+    text-align: center;
+    background: #2c2c2c;
+    padding: $margin-padding*1.5;
+    border-radius: $radius*2;
+    color: white;
+    position: relative;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $margin-padding;
+    justify-content: center;
+}
+
+.optionCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 100px;
+    background: #ff5500;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.optionCard:hover {
+    background: gray;
+}

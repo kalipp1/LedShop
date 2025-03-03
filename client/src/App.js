@@ -12,6 +12,10 @@ import CancelOrderPage from "components/pages/CancelOrderPage/CancelOrderPage";
 import AdminLoginPage from "components/pages/AdminLoginPage/AdminLoginPage";
 import AdminDashboardPage from "components/pages/AdminDashboardPage/AdminDashboardPage";
 import AdminOrdersPage from "components/pages/AdminOrdersPage/AdminOrdersPage";
+import AdminSingleOrderPage from "components/pages/AdminSingleOrderPage/AdminSingleOrderPage";
+import AdminProductsDashboardPage from "components/pages/AdminProductsDashboardPage/AdminProductsDashboardPage";
+import AdminAddProduct from "components/pages/AdminAddProduct/AdminAddProduct";
+import AdminRemoveProduct from "components/pages/AdminRemoveProduct/AdminRemoveProduct";
 import './App.css';
 
 function App() {
@@ -29,6 +33,10 @@ function App() {
             <Route path="/admin/login" element={<AdminLoginPage />} />
             <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
             <Route path="/admin/orders" element={<AdminOrdersPage />} />
+            <Route path="/admin/order/:orderId" element={<AdminSingleOrderPage />} />
+            <Route path="/admin/products" element={<AdminProductsDashboardPage />} />
+            <Route path="/admin/products/add" element={<AdminAddProduct />} />
+            <Route path="/admin/products/remove" element={<AdminRemoveProduct />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Container>

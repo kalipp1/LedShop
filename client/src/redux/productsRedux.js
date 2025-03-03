@@ -5,17 +5,18 @@ import initialState from "./initialState";
 /* SELECTORS */
 export const getAllProducts = ({ products }) => products.data;
 export const getProductById = ({ products }, id) => products.data.find(prod => prod.id === id);
-// export const getProductSearched = ({ advertisements }, searchPhrase) => advertisements.data.filter(ad => ad.title.toLowerCase().includes(searchPhrase.toLowerCase()) || ad.location.toLowerCase().includes(searchPhrase.toLowerCase()) );
 
 /* ACTIONS */
 const reducerName = 'products';
 const createActionName = name => `app/${reducerName}/${name}`;
 const LOAD_PRODUCTS = createActionName('LOAD_PRODUCTS');
 const START_REQUEST = createActionName('START_REQUEST');
+const REMOVE_PRODUCT = createActionName('REMOVE_PRODUCT');
 
 // Action name creator
 export const loadProducts = payload => ({ type: LOAD_PRODUCTS, payload });
 export const startRequest = () => ({ type: START_REQUEST });
+export const removeProduct = id => ({ type: REMOVE_PRODUCT, payload: id });
 
 export const loadProductsRequest = () => {
     return async dispatch => {
@@ -30,14 +31,22 @@ export const loadProductsRequest = () => {
     }
 }
 
-//API Req
-// export const fetchAds = () => {
-//     return (dispatch) => {
-//         fetch(`${API_URL}/api/ads`)
-//             .then(res => res.json())
-//             .then(advertisements => dispatch(loadAds(advertisements)));
-//     };
-//   };
+export const removeProductRequest = (productId) => async dispatch => {
+    try {
+        const token = localStorage.getItem("token");
+
+        const res = await axios.delete(`${API_URL}/api/products/${productId}`, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+
+        if (!res.status === 200) throw new Error("Failed to delete product");
+
+        dispatch(removeProduct(productId));
+    } catch (err) {
+        console.error("Error removing product:", err.message);
+    }
+};
+
 
 //Reducer
 const productsReducer = (statePart = initialState.products, action) => {
@@ -46,6 +55,11 @@ const productsReducer = (statePart = initialState.products, action) => {
             return { ...statePart, loading: true };
         case LOAD_PRODUCTS: 
             return { data: [...action.payload], loading: false };
+        case REMOVE_PRODUCT:
+            return { 
+                ...statePart, 
+                data: statePart.data.filter(product => product.id !== action.payload)
+            };
         default:
             return statePart;
     };   

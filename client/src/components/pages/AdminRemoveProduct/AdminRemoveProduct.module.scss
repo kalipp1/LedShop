@@ -1,0 +1,67 @@
+@import '../../../styles/settings.scss';
+
+.productsContainer {
+    color: white;
+    text-align: center;
+    padding: 20px;
+    background: #2c2c2c;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: auto;
+    position: relative;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.productList {
+    list-style: none;
+    padding: 0;
+}
+
+.productItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: gray;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.buttonRemove {
+    background: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.buttonRemove:hover {
+    background: darkred;
+}
+
+.backButton{
+    text-align: center;
+    margin-top: $margin-padding*1.5;
+    padding: $margin-padding/2;
+    background: gray;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    transition: $transition-cart-dropdown;
+    border: none;
+    margin-right: auto;
+    position: absolute;
+    left: 5%;
+    top: -5%;
+}
