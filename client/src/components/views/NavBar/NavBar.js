@@ -19,7 +19,6 @@ const NavBar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isCartOpen, setIsCartOpen] = useState(false);
-    const isAuthenticated = useSelector(state => state.admin.isAuthenticated);
 
     const isSuccessPage = matchPath("/success/:orderId", location.pathname);
 

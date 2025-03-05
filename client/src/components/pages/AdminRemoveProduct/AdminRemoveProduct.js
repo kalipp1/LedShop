@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { API_URL } from "config";
+import { useEffect } from "react";
 import styles from "./AdminRemoveProduct.module.scss";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
