@@ -16,6 +16,8 @@ import AdminSingleOrderPage from "components/pages/AdminSingleOrderPage/AdminSin
 import AdminProductsDashboardPage from "components/pages/AdminProductsDashboardPage/AdminProductsDashboardPage";
 import AdminAddProduct from "components/pages/AdminAddProduct/AdminAddProduct";
 import AdminRemoveProduct from "components/pages/AdminRemoveProduct/AdminRemoveProduct";
+import AdminClientsListPage from "components/pages/AdminClientsListPage/AdminClientsListPage";
+import AdminClientSinglePage from "components/pages/AdminClientSinglePage/AdminClientSinglePage";
 import './App.css';
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
             <Route path="/admin/products" element={<AdminProductsDashboardPage />} />
             <Route path="/admin/products/add" element={<AdminAddProduct />} />
             <Route path="/admin/products/remove" element={<AdminRemoveProduct />} />
+            <Route path="/admin/clients" element={<AdminClientsListPage />} />
+            <Route path="/admin/clients/:clientId" element={<AdminClientSinglePage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Container>

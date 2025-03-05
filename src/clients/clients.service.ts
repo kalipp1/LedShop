@@ -11,6 +11,7 @@ export class ClientsService {
     public getById(id: Client['id']): Promise<Client | null> {
         return this.prismaService.client.findUnique({
           where: { id },
+          include: { orders: true }
         });
       }
     public deleteById(id: Client['id']): Promise<Client> {

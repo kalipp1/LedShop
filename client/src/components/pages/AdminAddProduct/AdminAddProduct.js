@@ -124,7 +124,7 @@ const AdminAddProduct = () => {
                 ))}
 
                 <button type="button" onClick={addVariant} className={styles.addButton}>Add Variant</button>
-                <button type="submit">Add Product</button>
+                <button type="submit" className={styles.addButton}>Add Product</button>
             </form>
         </div>
     );
