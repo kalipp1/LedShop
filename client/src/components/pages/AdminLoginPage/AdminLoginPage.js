@@ -2,13 +2,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "config";
 import { Alert, Button, Form, Spinner } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 import styles from "./AdminLoginPage.module.scss";
 
 const AdminLoginPage = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [status, setStatus] = useState(null); // "loading", "error", "success"
+    const [logoutMessage, setLogoutMessage] = useState(location.state?.logoutMessage || "");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,6 +41,7 @@ const AdminLoginPage = () => {
         <div className={styles.adminLoginContainer}>
             <h2>Admin Login</h2>
             <Form onSubmit={handleSubmit} className={styles.adminLoginForm}>
+                {logoutMessage && <Alert variant="info" onClose={() => setLogoutMessage("")} dismissible>{logoutMessage}</Alert>}
                 {status === "error" && <Alert variant="danger">Invalid login or password</Alert>}
                 {status === "success" && <Alert variant="success">Login successful! Redirecting...</Alert>}
                 <Form.Group className={styles.formInput} controlId="formLogin">

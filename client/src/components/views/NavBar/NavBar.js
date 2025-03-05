@@ -5,18 +5,32 @@ import { Container } from 'react-bootstrap';
 import { NavLink, useLocation, matchPath } from 'react-router-dom';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faShoppingCart, faXmarkCircle } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import { adminLogout } from '../../../redux/adminRedux';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import CartDropdown from 'components/features/CartDropdown/CartDropdown';
 
 
 const NavBar = () => {
     const location = useLocation();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [isCartOpen, setIsCartOpen] = useState(false);
+    const isAuthenticated = useSelector(state => state.admin.isAuthenticated);
 
     const isSuccessPage = matchPath("/success/:orderId", location.pathname);
 
     const isOnCartOrPaymentPageOrSuccessPageOrAdmin = location.pathname === "/cart" || location.pathname === "/payment" || location.pathname.startsWith("/admin") || isSuccessPage !== null;
+    const logoutBTN = location.pathname.startsWith("/admin");
+
+    const handleLogout = () => {
+      localStorage.removeItem("token");
+      dispatch(adminLogout());
+      navigate("/admin/login", { state: { logoutMessage: "You have been logged out successfully." } });
+    };
 
     return (
         <Navbar className={clsx(styles.navbar)}>
@@ -31,6 +45,11 @@ const NavBar = () => {
             {!isOnCartOrPaymentPageOrSuccessPageOrAdmin && (
               <button className={styles.cartButton} onClick={() => setIsCartOpen(!isCartOpen)}>
                 <FontAwesomeIcon icon={faShoppingCart} />
+              </button>
+            )}
+            {logoutBTN && (
+              <button className={styles.logOutButton} onClick={handleLogout}>
+              <FontAwesomeIcon icon={faXmarkCircle} /> Log Out
               </button>
             )}
           </Nav>

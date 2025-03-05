@@ -44,4 +44,16 @@
         background-color: rgba(0, 0, 0, 0.401);
         transition: $transition;
     }
+    .logOutButton{
+        background-color: transparent;
+        border: 1px solid red;
+        color: red;
+        border-radius: $radius*4;
+        font-size: $base-size;
+        padding-block: 0px;
+    }
+    .logOutButton:hover{
+        background-color: rgb(240, 101, 101);
+        transition: $transition-navbar-links;
+    }
 }

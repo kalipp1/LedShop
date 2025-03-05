@@ -41,6 +41,12 @@ const AdminRemoveProduct = () => {
                             <span className={styles.productText}>
                                 {product.name} - ${product.price}
                             </span>
+                            <button 
+                                className={styles.buttonMore} 
+                                onClick={() => navigate(`/admin/products/${product.id}/variants`)}
+                            >
+                                Delete Variants
+                            </button>
                             <button className={styles.buttonRemove} onClick={() => handleRemove(product.id)}>
                                 Remove
                             </button>

@@ -1,9 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { Product } from '@prisma/client';
+import { Product, ColorVariant } from '@prisma/client';
 import { PrismaService } from 'src/shared/services/prisma.service';
 import { NotFoundException } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
+
+interface ProductWithVariants extends Product {
+  colorVariants: ColorVariant[];
+}
 
 @Injectable()
 export class ProductsService {
@@ -16,20 +20,20 @@ export class ProductsService {
           });
       }
     }
-    public getAll(): Promise<Product[]> {
+
+    public getAll(): Promise<ProductWithVariants[]> {
         return this.prismaService.product.findMany({
           include: {
             colorVariants: true,
           },
         });
       }
-      public getById(id: Product['id']): Promise<Product | null> {
-        return this.prismaService.product.findUnique({
+      public async getById(id: Product['id']): Promise<ProductWithVariants | null> {
+        const prod = await this.prismaService.product.findUnique({
           where: { id },
-          include: {
-            colorVariants: true,
-          }
+          include: { colorVariants: true }
         });
+        return prod;
       }
       public async deleteById(id: Product['id']): Promise<Product> {
         try {
@@ -62,6 +66,26 @@ export class ProductsService {
           throw error;
         }
       }
+
+      public async deleteVariantById(variantId: string): Promise<void> {
+        const variant = await this.prismaService.colorVariant.findUnique({
+            where: { id: variantId },
+        });
+    
+        if (!variant) {
+            throw new NotFoundException('Variant not found');
+        }
+    
+        if (variant.imageUrl) {
+            const variantImagePath = path.join(__dirname, '..', '..', 'public', variant.imageUrl);
+            this.deleteFile(variantImagePath);
+        }
+    
+        await this.prismaService.colorVariant.delete({
+            where: { id: variantId },
+        });
+    }
+
       public create(productData: Omit<Product, 'id' | 'createdAt' | 'updatedAt'> & { colorVariants: { color: string; price: number; imageUrl: string }[] }): Promise<Product> {
         console.log("🔹 Dane otrzymane w backendzie:", productData);
 
