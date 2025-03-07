@@ -1,59 +1,56 @@
 @import '../../../styles/settings.scss';
 
 .navbar {
-    background-color: gray;
-    color: white;
-    border-radius: 10px;
-    margin: 30px 10px;
-    max-height: 9vh;
+    background-color: $color-primary;
+    color: $color-text-bright;
+    border-radius: $radius*2;
+    margin: $navbar-margin;
+    max-height: $navbar-maxheight;
     .logo{
-        color: white;
+        color: $color-text-bright;
         font-size: $base-size * 2;
         img{
-            max-width: 80px;
-            max-height: 80px;
+            max-width: $navbar-logo-maxwidth;
+            max-height: $navbar-logo-maxheight;
         }
     }
     .nav {
-        margin-right: 10px;
+        margin-right: $margin-padding/2;
         
     }
     .nav a.link{
+        color: $color-text-bright;
         text-decoration: none;
-        border: solid 1px blue;
+        border: solid 1px $color-text-bright;
         border-radius: $radius*4;
-        margin: 5px;
+        margin: $margin-padding/4;
     }
     .nav .link:hover{
         text-decoration: none;
-        background-color: lightblue;
-    }
-    .linkActive {
-        color: white !important;
-        transition: 0.5s;
+        background-color: $navbar-btn-hover;
     }
     .cartButton{
-        background-color: gray;
-        margin-left: 5vh;
+        background-color: $color-primary;
+        margin-left: $navbar-cart-btn-margin;
         padding: $margin-padding / 2;
         padding-inline: $margin-padding;
         border: none;
         border-radius: $radius *2;
     }
     .cartButton:hover{
-        background-color: rgba(0, 0, 0, 0.401);
+        background-color: $navbar-btn-hover;
         transition: $transition;
     }
     .logOutButton{
         background-color: transparent;
-        border: 1px solid red;
-        color: red;
+        border: 1px solid $color-red;
+        color: $color-red;
         border-radius: $radius*4;
-        font-size: $base-size;
-        padding-block: 0px;
+        font-size: $base-size+2px;
+        margin: $margin-padding/4;
     }
     .logOutButton:hover{
-        background-color: rgb(240, 101, 101);
+        background-color: $logout-hover;
         transition: $transition-navbar-links;
     }
 }

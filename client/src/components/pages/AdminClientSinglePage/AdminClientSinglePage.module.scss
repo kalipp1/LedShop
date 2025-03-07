@@ -1,37 +1,17 @@
 @import '../../../styles/settings.scss';
 
 .clientPageContainer{
-    color: white;
+    color: $color-text-bright;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(51, 51, 51);
+    background-color: $color-primary;
     margin-left: $margin-padding*10;
     margin-right: $margin-padding*10;
     border-radius: $radius;
     position: relative;
     .clientOrdersList{
         list-style: none;
-    }
-    .backButton{
-        text-align: center;
-        margin-top: $margin-padding*1.5;
-        padding: $margin-padding/2;
-        background: gray;
-        color: white;
-        border-radius: 5px;
-        text-decoration: none;
-        font-size: 20px;
-        font-weight: bold;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-        transition: $transition-cart-dropdown;
-        border: none;
-        margin-right: auto;
-        position: absolute;
-        left: 1%;
-        top: -3%;
     }
 }

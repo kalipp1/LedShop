@@ -10,7 +10,6 @@ import { useState } from 'react';
 import { adminLogout } from '../../../redux/adminRedux';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
 import CartDropdown from 'components/features/CartDropdown/CartDropdown';
 
 

@@ -1,20 +1,41 @@
 @import '../../../styles/settings.scss';
 
 .button{
-    padding: 10px;
+    padding: $margin-padding/2;
     font-size: $base-size;
-    color: white;
-    background-color: blue;
+    color: $color-text-bright;
+    background-color: $color-info;
     border: none;
     border-radius: $radius;
 }
 
 .button:hover{
-    background-color: lightblue;
+    background-color: $navbar-btn-hover;
     transition: $transition;
 }
 
 .addTo {
     padding: $margin-padding;
     font-size: $base-size *2;
+}
+
+.backButton{
+    text-align: center;
+    margin-top: $margin-padding*1.5;
+    padding: $margin-padding/2;
+    background: $color-secondary;
+    color: $color-text-bright;
+    border-radius: $radius;
+    text-decoration: none;
+    font-size: $base-size + 6px;
+    font-weight: bold;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    transition: $transition-cart-dropdown;
+    border: none;
+    margin-right: auto;
+    position: absolute;
+    left: 1%;
+    top: -2%;
 }

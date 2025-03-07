@@ -5,7 +5,7 @@ import { Card, Button } from 'react-bootstrap';
 
 const ProductCard = ({ name, price, minPrice, image, id }) => {
   return (
-    <Card className="col-lg-4 col-sm-12 col-md-8 mx-3 py-2 my-2 d-flex" style={{ maxWidth: '18rem' }}>
+    <Card className="mx-3 py-2 my-2 d-flex" style={{ maxWidth: '20rem', width: '100%', backgroundColor: "#c6c6c6e4" }}>
       <Card.Img variant="top"  className={styles.cardImage} src={`${IMGS_URL}${image}`} />
       <Card.Body className="d-flex flex-column">
         <Card.Title className='mb-3'>{ name }</Card.Title>
@@ -15,7 +15,7 @@ const ProductCard = ({ name, price, minPrice, image, id }) => {
         </div>
         <div className='mt-auto'>
           <NavLink to={`/products/${id}`} >
-            <Button variant="secondary" >Read more</Button>
+            <Button variant="secondary" >Show</Button>
           </NavLink>
         </div>
       </Card.Body>

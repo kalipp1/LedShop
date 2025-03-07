@@ -2,19 +2,19 @@
 
 .dashboardContainer {
     max-width: 800px;
-    margin: 10vh auto;
+    margin: $admin-products-dashboard-container-margin;
     text-align: center;
-    background: #2c2c2c;
+    background: $color-primary;
     padding: $margin-padding*1.5;
     border-radius: $radius*2;
-    color: white;
+    color: $color-text-bright;
     position: relative;
 }
 
 .options {
     display: flex;
     flex-wrap: wrap;
-    gap: $margin-padding;
+    gap: $gap*2;
     justify-content: center;
 }
 
@@ -22,42 +22,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 250px;
-    height: 100px;
-    background: #ff5500;
-    color: white;
-    font-size: 18px;
+    width: $admin-products-dashboard-option-card-width;
+    height: $admin-products-dashboard-option-card-height;
+    background: $main-btns-color;
+    color: $color-text-bright;
+    font-size: $base-size + 4px;
     font-weight: bold;
     text-decoration: none;
-    border-radius: 8px;
-    transition: 0.3s;
+    border-radius: $admin-products-dashboard-option-card-radius;
+    transition: $transition-cart-dropdown;
 }
 
 .optionCard:hover {
-    background: gray;
-}
-
-.backButton{
-    text-align: center;
-    margin-top: $margin-padding*1.5;
-    padding: $margin-padding/2;
-    background: gray;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    transition: $transition-cart-dropdown;
-    border: none;
-    margin-right: auto;
-    position: absolute;
-    left: 1%;
-    top: -0.5%;
-}
-
-.backButton:hover{
-    background: gray;
+    background: $color-secondary;
 }

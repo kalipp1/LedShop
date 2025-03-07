@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Spinner } from "react-bootstrap";
+import Button from "components/common/Button/Button";
 
 const AdminClientSinglePage = () => {
     const navigate = useNavigate();
@@ -39,9 +40,7 @@ const AdminClientSinglePage = () => {
 
     return (
         <div className={styles.clientPageContainer}>
-            <button className={styles.backButton} onClick={() => navigate(-1)}>
-            <FontAwesomeIcon icon={faCircleArrowLeft} />
-            </button>
+            <Button variant={'backButton'} action={() => navigate(-1)} content={<FontAwesomeIcon icon={faCircleArrowLeft} />} />
             <h1>Client Details</h1>
             <p>Client: {client.id}</p>
             <p>Client name: {client.name}</p>

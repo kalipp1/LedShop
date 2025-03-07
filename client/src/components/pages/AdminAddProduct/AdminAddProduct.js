@@ -4,6 +4,7 @@ import { API_URL } from "config";
 import styles from "./AdminAddProduct.module.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import Button from "components/common/Button/Button";
 
 const AdminAddProduct = () => {
     const navigate = useNavigate();
@@ -80,9 +81,7 @@ const AdminAddProduct = () => {
 
     return (
         <div className={styles.addProductContainer}>
-            <button className={styles.backButton} onClick={() => navigate(-1)}>
-            <FontAwesomeIcon icon={faCircleArrowLeft} />
-            </button>
+            <Button variant={'backButton'} action={() => navigate(-1)} content={<FontAwesomeIcon icon={faCircleArrowLeft} />} />
             <h1>Add New Product</h1>
             {status === "success" && <p className={styles.success}>Product added successfully! Redirecting...</p>}
             {status === "serverError" && <p className={styles.error}>Something went wrong. Try again.</p>}

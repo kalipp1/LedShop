@@ -4,6 +4,7 @@ import { API_URL } from "config";
 import styles from "./AdminRemoveVariants.module.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import Button from "components/common/Button/Button";
 
 const AdminRemoveVariants = () => {
     const { productId } = useParams();
@@ -50,9 +51,7 @@ const AdminRemoveVariants = () => {
 
     return (
         <div className={styles.variantsContainer}>
-            <button className={styles.backButton} onClick={() => navigate(-1)}>
-                <FontAwesomeIcon icon={faCircleArrowLeft} />
-            </button>
+            <Button variant={'backButton'} action={() => navigate(-1)} content={<FontAwesomeIcon icon={faCircleArrowLeft} />} />
             <h1>Variants Management</h1>
             {variants.length === 0 ? (
                 <p>No variants found</p>

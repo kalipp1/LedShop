@@ -1,24 +1,24 @@
 @import '../../../styles/settings.scss';
 
 .clientsContainer{
-    color: white;
-    margin: 10vh auto;
+    color: $color-text-bright;
+    margin: $admin-clients-page-container-margin;
     text-align: center;
-    background: #2c2c2c;
+    background: $color-primary;
     padding: $margin-padding*1.5;
     border-radius: $radius*2;
-    color: white;
+    color: $color-text-bright;
     position: relative;
     .clientListItem{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        background: gray;
+        background: $color-secondary;
         padding: $margin-padding/2;
         margin: $margin-padding/2;
         border-radius: $radius;
-        color: white;
+        color: $color-text-bright;
         font-weight: bolder;
     }
     .orderText{
@@ -34,37 +34,17 @@
         text-align: center;
         margin-top: $margin-padding*1.5;
         padding: $margin-padding/2;
-        background: lime;
-        color: white;
+        background: $color-admin-orders-btn-more;
+        color: $color-text-bright;
         border-radius: $radius;
         text-decoration: none;
-        font-size: 20px;
+        font-size: $base-size + 6px;
         font-weight: bold;
         width: fit-content;
         transition: $transition-cart-dropdown;
         border: none;
     }
     .buttonMore:hover {
-        background: rgb(42, 42, 42);
-    }
-    .backButton{
-        text-align: center;
-        margin-top: $margin-padding*1.5;
-        padding: $margin-padding/2;
-        background: gray;
-        color: white;
-        border-radius: 5px;
-        text-decoration: none;
-        font-size: 20px;
-        font-weight: bold;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-        transition: $transition-cart-dropdown;
-        border: none;
-        margin-right: auto;
-        position: absolute;
-        left: 1%;
-        top: -0.5%;
+        background: $color-admin-orders-btn-more-hover;
     }
 }

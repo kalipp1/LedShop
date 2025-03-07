@@ -6,8 +6,8 @@
     width: 50%;
 }
 img {
-    max-width: 100vh;
-    max-height: 50vh;
+    max-width: $product-carousel-img-max-width;
+    max-height: $product-carousel-img-max-height;
     object-fit: contain;
     margin: 0 auto;
     display: block;

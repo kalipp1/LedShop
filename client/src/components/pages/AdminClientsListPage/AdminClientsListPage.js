@@ -6,6 +6,7 @@ import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from "react-redux";
 import { loadClientsRequest, getClients } from "../../../redux/clientsRedux";
 import { useSelector } from "react-redux";
+import Button from "components/common/Button/Button";
 
 const AdminClientsListPage = () => {
     const navigate = useNavigate();
@@ -24,9 +25,7 @@ const AdminClientsListPage = () => {
 
     return (
         <div className={styles.clientsContainer}>
-            <button className={styles.backButton} onClick={() => navigate(-1)}>
-            <FontAwesomeIcon icon={faCircleArrowLeft} />
-            </button>
+            <Button variant={'backButton'} action={() => navigate(-1)} content={<FontAwesomeIcon icon={faCircleArrowLeft} />} />
             <h1>Client Management</h1>
             {clients.length === 0 ? <p>No clients found</p> : (
                 <ul>

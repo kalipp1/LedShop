@@ -1,19 +1,19 @@
 @import '../../../styles/settings.scss';
 
 .cancelOrderContainer{
-    color: white;
+    color: $color-text-bright;
     .formOrder{
-        margin-top: 10vh;
+        margin-top: $cancel-order-form-margin;
     }
     .button{
         display: block;
         text-align: center;
-        margin-block: 5vh;
-        padding: 10px;
-        background: #ff5500;
-        color: white;
-        font-size: 20px;
-        border-radius: 5px;
+        margin-block: $cancel-order-form-btn-margin;
+        padding: $margin-padding/2;
+        background: $main-btns-color;
+        color: $color-text-bright;
+        font-size: $base-size + 6px;
+        border-radius: $radius;
         text-decoration: none;
         font-weight: bold;
         width: fit-content;
@@ -23,41 +23,41 @@
         border: none;
     }
     .button:hover {
-        background: gray;
+        background: $color-secondary;
     }
     .confirmationBox{
-        margin-block: 10vh;
-        margin-inline: 40vh;
+        margin-block: $confirmation-box-margin-block;
+        margin-inline: $confirmation-box-margin-inline;
     }
     .itemsList{
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         max-width: 100%;
-        gap: 5vh;
+        gap: $canel-order-item-list-gap;
         justify-content: center;
     }
     .itemImage{
-        width: 200px;
-        height: 200px;
+        width: $cancel-order-item-image-width;
+        height: $cancel-order-item-image-height;
         border-radius: $radius*4;
     }
     .buttonContainer{
         display: flex;
         flex-direction: row;
-        gap: 10px;
+        gap: $gap;
         justify-content: center;
     }
     .bolder{
         font-weight: bolder;
     }
     .itemDetails{
-        margin-top: 2vh;
+        margin-top: $cancel-order-item-details;
         .prodName{
-            font-size: 20px;
+            font-size: $base-size + 6px;
             font-weight: bolder;
         }
         p{
-            font-size: 15px;
+            font-size: $base-size + 1px;
             margin: 0;
         }
     }

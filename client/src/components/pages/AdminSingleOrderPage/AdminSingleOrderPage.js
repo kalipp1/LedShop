@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { IMGS_URL } from "config";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import Button from "components/common/Button/Button";
 
 const AdminSingleOrderPage = () => {
     const navigate = useNavigate();
@@ -34,9 +35,7 @@ const AdminSingleOrderPage = () => {
 
     return (
         <div className={styles.allPage}>
-            <button className={styles.backButton} onClick={() => navigate(-1)}>
-            <FontAwesomeIcon icon={faCircleArrowLeft} />
-            </button>
+            <Button variant={'backButton'} action={() => navigate(-1)} content={<FontAwesomeIcon icon={faCircleArrowLeft} />} />
             <div className={styles.orderDetails}>
                 <h1>Order Details</h1>
                 <p><span className={styles.bold}>Order ID:</span> {order.id}</p>

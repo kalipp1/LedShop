@@ -4,24 +4,24 @@
     position: absolute;
     top: 75px;
     right: 20px;
-    background: #222;
-    color: white;
-    border-radius: 8px;
-    padding: 15px;
-    width: 280px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background: $color-primary;
+    color: $color-text-bright;
+    border-radius: $cart-dropdown-radius;
+    padding: $cart-dropdown-padding;
+    width: $cart-dropdown-width;
+    box-shadow: $cart-dropdown-box-shadow;
     z-index: 1000;
 }
 
 .empty {
     text-align: center;
-    font-size: 14px;
-    padding: 10px;
-    color: gray;
+    font-size: $base-size;
+    padding: $margin-padding/2;
+    color: $color-secondary;
 }
 
 .cartItems {
-    max-height: 200px;
+    max-height: $cart-dropdown-items-max-height;
     overflow-y: auto;
 }
 
@@ -29,14 +29,15 @@
     position: relative;
     display: flex;
     align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: $cart-dropdown-item-padding;
+    border-bottom: $cart-dropdown-item-border;
+    width: 95%;
  
     .cartItemImage {
-        width: 80px;
-        height: 80px;
-        border-radius: 5px;
-        margin-right: 10px;
+        width: $cart-dropdown-item-image-width;
+        height: $cart-dropdown-item-image-height;
+        border-radius: $radius;
+        margin-right: $margin-padding/2;
     }
     &:hover .quantityBox,
         .quantityBox:hover {
@@ -49,7 +50,7 @@
         display: flex;
     }
     .deleteProdBtn:hover{
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: $color-cart-dropdown-delete-prod-btn;
         transition: $transition-cart-dropdown;
         border-radius: $radius;
     }
@@ -57,7 +58,7 @@
 
 .deleteProdBtn{
     display: none;
-    color: red;
+    color: $color-red;
     border: 0;
     background-color: transparent;
     position: absolute;
@@ -70,28 +71,28 @@
 }
 
 .cartItemName {
-    font-size: 14px;
+    font-size: $base-size;
     font-weight: bold;
 }
 
 .cartItemPrice {
-    font-size: 12px;
-    color: gray;
+    font-size: $base-size - 2px;
+    color: $color-secondary;
 }
 
 .cartButton {
     display: block;
     text-align: center;
-    padding: 10px;
-    margin-top: 10px;
-    background: #ff5500;
-    color: white;
-    border-radius: 5px;
+    padding: $margin-padding/2;
+    margin-top: $margin-padding/2;
+    background: $main-btns-color;
+    color: $color-text-bright;
+    border-radius: $radius;
     text-decoration: none;
 }
 
 .cartButton:hover {
-    background: gray;
+    background: $color-secondary;
     transition: $transition-cart-dropdown-button;
 }
 
@@ -99,41 +100,41 @@
     text-align: center;
     margin-block: $margin-padding;
     font-weight: bold;
-    color: #fff;
+    color: $color-text-bright;
 
     span {
-        color: white;
+        color: $color-text-bright;
     }
 }
 
 .quantityBox{
     display: none;
     position: absolute;
-    width: 80px;
-    height: 80px;
+    width: $cart-dropdown-item-image-width;
+    height: $cart-dropdown-item-image-height;
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
+    background: $color-cart-dropdown-quantity-box;
+    color: $color-text-bright;
+    padding: $cart-dropdown-quantity-box-padding;
+    border-radius: $radius;
     align-items: center;
-    gap: 5px;
+    gap: $gap/2;
     justify-content: center;
     z-index: 10;
 }
 .quantityBox button {
     background: transparent;
     border: none;
-    color: white;
-    font-size: 14px;
+    color: $color-text-bright;
+    font-size: $base-size;
     cursor: pointer;
-    padding: 3px 8px;
-    border-radius: 3px;
+    padding: $cart-dropdown-quantity-box-btn-padding;
+    border-radius: $cart-dropdown-quantity-box-btn-radius;
     transition: $transition-cart-dropdown;
 
     &:hover {
-        background: rgba(255, 255, 255, 0.2);
+        background: $color-cart-dropdown-quantity-box-btn-hover;
     }
 }

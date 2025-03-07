@@ -1,67 +1,56 @@
 @import '../../../styles/settings.scss';
 
 .productsContainer {
-    color: white;
+    color: $color-text-bright;
     text-align: center;
-    padding: 20px;
-    background: #2c2c2c;
-    border-radius: 10px;
+    padding: $margin-padding;
+    background: $color-primary;
+    border-radius: $radius*2;
     max-width: 800px;
     margin: auto;
     position: relative;
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin-bottom: $margin-padding;
 }
 
 .productList {
     list-style: none;
-    padding: 0;
+    padding: $margin-padding/2;
 }
 
 .productItem {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: gray;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
+    background: $color-secondary;
+    padding: $margin-padding/2;
+    margin: $admin-remove-product-item-margin;
+    border-radius: $radius;
     font-weight: bold;
 }
 
 .buttonRemove {
-    background: red;
-    color: white;
+    background: $color-red;
+    color: $color-text-bright;
     border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
+    padding: $admin-remove-product-btn-padding;
+    border-radius: $radius;
     cursor: pointer;
     font-weight: bold;
 }
 
 .buttonRemove:hover {
-    background: darkred;
+    background: $admin-remove-btn-hover;
+    transition: $transition-cart-dropdown;
 }
 
-.backButton{
-    text-align: center;
-    margin-top: $margin-padding*1.5;
-    padding: $margin-padding/2;
-    background: gray;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
+.buttonDeleteVariant{
+    border-radius: $radius;
+    background-color: $admin-btn-hover;
+}
+.buttonDeleteVariant:hover{
+    background-color: $navbar-btn-hover;
     transition: $transition-cart-dropdown;
-    border: none;
-    margin-right: auto;
-    position: absolute;
-    left: 5%;
-    top: -5%;
 }

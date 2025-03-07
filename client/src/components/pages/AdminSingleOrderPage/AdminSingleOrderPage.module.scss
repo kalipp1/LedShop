@@ -1,15 +1,16 @@
 @import '../../../styles/settings.scss';
 
 .allPage{
-    color: white;
-    background-color: rgb(90, 90, 90);
+    color: $color-text-bright;
+    background-color: $color-primary;   
     padding: $margin-padding;
+    position: relative;
     .bold{
         font-weight: bolder;
     }
     .itemImage{
-        width: 100px;
-        height: 100px;
+        width: $admin-single-order-page-item-image-width;
+        height: $admin-single-order-page-item-image-height;
     }
     .orderItems{
         display: flex;
@@ -17,29 +18,9 @@
         justify-content: center;
     }
     .orderItem{
-        margin: 2vh;
+        margin: $admin-single-order-page-order-item-margin;
         p{
             margin: 0;
         }
-    }
-    .backButton{
-        text-align: center;
-        margin-top: $margin-padding*1.5;
-        padding: $margin-padding/2;
-        background: gray;
-        color: white;
-        border-radius: 5px;
-        text-decoration: none;
-        font-size: 20px;
-        font-weight: bold;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-        transition: $transition-cart-dropdown;
-        border: none;
-        margin-right: auto;
-        position: absolute;
-        left: 10%;
-        top: 15%;
     }
 }

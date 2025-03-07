@@ -6,19 +6,19 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    font-size: 18px;
+    font-size: $base-size + 4px;
     font-weight: bold;
-    color: white;
+    color: $color-text-bright;
 }
 
 .loader {
-    width: 50px;
-    height: 50px;
-    border: 5px solid #ddd;
-    border-top: 5px solid #ff5500;
+    width: $loader-cart-width;
+    height: $loader-cart-height;
+    border: 5px solid $color-cart-page-loader;
+    border-top: 5px solid $main-btns-color;
     border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 20px;
+    animation: $loader-cart-animation;
+    margin-bottom: $margin-padding;
 }
 
 @keyframes spin {
@@ -26,10 +26,10 @@
     100% { transform: rotate(360deg); }
 }
 .allPage{
-    color: white;
+    color: $color-text-bright;
     .cartItemImage{
-        width: 150px;
-        height: 150px;
+        width: $cart-item-image-cart-page-width;
+        height: $cart-item-image-cart-page-height;
         border-radius: $radius *2;
     }
     .CartPage{
@@ -44,7 +44,7 @@
     .cartItem{
         display: flex;
         flex-direction: row;
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid $color-text-bright;
         margin-block: $margin-padding;
         width: 100%;
         justify-content: space-between;
@@ -55,14 +55,14 @@
     .buttonQuantity{
         border: none;
         border-radius: $radius;
-        margin-inline: 10px;
+        margin-inline: $margin-padding/2;
         width: 29%;
     }
     .cartItemDetails{
         position: relative;
         z-index: 2;
-        margin-top: 20px;
-        margin-left: 80px;
+        margin-top: $margin-padding;
+        margin-left: $margin-padding*4;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -78,57 +78,57 @@
         z-index: 5;
         border: none;
         border-radius: $radius;
-        margin-inline: 10px;
-        width: 30px;
+        margin-inline: $margin-padding/2;
+        width: $delete-prod-btn-width;
     }
     .deleteProdBtn:hover{
-        background-color: red;
+        background-color: $color-red;
         transition: $transition-cart-dropdown;
     }
     .priceBox{
         margin-left: $margin-padding*5;
         h5{
-            font-size: 18px;
+            font-size: $base-size + 4px;
         }
     }
     .progressContainer {
-        margin-block: 15px;
+        margin-block: $margin-progress-container;
         text-align: center;
       }
       
       .progressText {
-        font-size: 14px;
-        margin-bottom: 5px;
+        font-size: $base-size;
+        margin-bottom: $margin-padding/4;
         font-weight: bold;
-        color: white;
+        color: $color-text-bright;
       }
       
       .progressBar {
         width: 100%;
         height: 10px;
-        background: #444;
-        border-radius: 5px;
+        background: $color-progress-bar-background;
+        border-radius: $radius;
         overflow: hidden;
       }
       
       .progressFill {
         height: 100%;
-        background: #00ff00;
-        transition: width 0.5s ease-in-out;
+        background: $color-progress-bar-fill-background;
+        transition: $transition-progress-fill;
       }
       .paymentButton {
         position: relative;
         display: inline-block;
-        background: gray; 
-        color: white;
-        padding: 12px 20px;
-        font-size: 16px;
+        background: $color-secondary; 
+        color: $color-text-bright;
+        padding: $payment-btn-padding;
+        font-size: $base-size + 2px;
         font-weight: bold;
         border: none;
-        border-radius: 8px;
+        border-radius: $payment-btn-radius;
         overflow: hidden;
         cursor: pointer;
-        transition: all 0.3s ease-in-out;
+        transition: $transition-payment-btn;
         text-transform: uppercase;
         z-index: 1;
       
@@ -139,8 +139,8 @@
           left: 50%;
           width: 300%;
           height: 300%;
-          background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 20%, transparent 70%);
-          transition: top 0.4s ease-in-out;
+          background: radial-gradient(circle, $color-payment-btn-gradient 20%, transparent 70%);
+          transition: $transition-payment-btn-after;
           border-radius: 50%;
           transform: translateX(-50%);
           z-index: -1;
@@ -151,19 +151,19 @@
         }
       
         &:hover {
-          background: red;
+          background: $color-red;
         }
       }
       .continueShopping {
         display: block;
         text-align: center;
-        margin-top: 30px;
-        padding: 10px;
-        background: #ff5500;
-        color: white;
-        border-radius: 5px;
+        margin-top: $margin-padding*1.5;
+        padding: $margin-padding/2;
+        background: $main-btns-color;
+        color: $color-text-bright;
+        border-radius: $radius;
         text-decoration: none;
-        font-size: 10px;
+        font-size: $base-size - 4px;
         font-weight: bold;
         width: fit-content;
         margin-left: auto;
@@ -175,7 +175,7 @@
     }
     
     .continueShopping:hover {
-        background: gray;
+        background: $color-secondary;
     }
 }
 

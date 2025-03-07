@@ -1,24 +1,24 @@
 @import '../../../styles/settings.scss';
 
 .addProductContainer {
-    color: white;
-    padding: 20px;
+    color: $color-text-bright;
+    padding: $margin-padding;
     max-width: 600px;
-    margin: 10vh auto;
+    margin: $admin-add-product-page-container-margin;
     text-align: center;
-    background: #2c2c2c;
+    background: $color-primary;
     padding: $margin-padding*1.5;
     border-radius: $radius*2;
     position: relative;
 }
 
 .success {
-    color: lime;
+    color: $color-success;
     font-weight: bold;
 }
 
 .error {
-    color: red;
+    color: $color-error;
     font-weight: bold;
 }
 
@@ -31,68 +31,50 @@
 }
 
 .variantBox {
-    background: #333;
+    background: $color-admin-variant-box;
     display: flex;
     flex-direction: column;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 10px;
+    padding: $admin-variant-box-padding;
+    border-radius: $admin-variant-box-radius;
+    margin-top: $margin-padding/2;
 }
 
 label {
-    margin-top: 10px;
-    font-size: 16px;
+    margin-top: $margin-padding/2;
+    font-size: $base-size + 2px;
     font-weight: bold;
 }
 
 input, textarea {
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    padding: $margin-padding/2;
+    margin-top: $margin-padding/4;
+    border-radius: $radius;
+    border: 1px solid $color-input;
 }
 
 button {
-    margin-top: 15px;
-    padding: 10px;
-    background: rgb(73, 73, 73);
-    color: white;
+    margin-top: $admin-add-product-button-margin;
+    padding: $margin-padding/2;
+    background: $color-admin-add-product-btn;
+    color: $color-text-bright;
     font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: $radius;
     cursor: pointer;
 }
 
+.removeButton {
+    background: $color-red;
+    margin-top: $margin-padding/4;
+}
+.removeButton:hover {
+    background: $admin-remove-btn-hover;
+}
+
 .addButton:hover {
-    background: green;
+    background: $color-admin-add-product-btn-hover;
 }
 
 .addButton {
-    background: rgb(73, 73, 73);
-}
-
-.removeButton {
-    background: red;
-    margin-top: 5px;
-}
-
-.backButton{
-    text-align: center;
-    margin-top: $margin-padding*1.5;
-    padding: $margin-padding/2;
-    background: gray;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    transition: $transition-cart-dropdown;
-    border: none;
-    margin-right: auto;
-    position: absolute;
-    left: 2%;
-    top: -2%;
+    background: $color-admin-add-product-btn;
 }

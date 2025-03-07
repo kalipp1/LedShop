@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { getAllProducts, loadProductsRequest, removeProductRequest } from "../../../redux/productsRedux";
+import Button from "components/common/Button/Button";
 
 const AdminRemoveProduct = () => {
     const navigate = useNavigate();
@@ -26,9 +27,7 @@ const AdminRemoveProduct = () => {
 
     return (
         <div className={styles.productsContainer}>
-            <button className={styles.backButton} onClick={() => navigate(-1)}>
-            <FontAwesomeIcon icon={faCircleArrowLeft} />
-            </button>
+            <Button variant={'backButton'} action={() => navigate(-1)} content={<FontAwesomeIcon icon={faCircleArrowLeft} />} />
             <h1>Product Management</h1>
 
             {prods.length === 0 ? (
@@ -41,7 +40,7 @@ const AdminRemoveProduct = () => {
                                 {product.name} - ${product.price}
                             </span>
                             <button 
-                                className={styles.buttonMore} 
+                                className={styles.buttonDeleteVariant} 
                                 onClick={() => navigate(`/admin/products/${product.id}/variants`)}
                             >
                                 Delete Variants

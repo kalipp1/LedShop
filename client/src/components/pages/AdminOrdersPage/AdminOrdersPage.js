@@ -4,6 +4,7 @@ import styles from "./AdminOrdersPage.module.scss";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import Button from "components/common/Button/Button";
 
 const AdminOrdersPage = () => {
     const navigate = useNavigate();
@@ -49,9 +50,7 @@ const AdminOrdersPage = () => {
 
     return (
         <div className={styles.ordersContainer}>
-            <button className={styles.backButton} onClick={() => navigate(-1)}>
-            <FontAwesomeIcon icon={faCircleArrowLeft} />
-            </button>
+            <Button variant={'backButton'} action={() => navigate(-1)} content={<FontAwesomeIcon icon={faCircleArrowLeft} />} />
             <h1>Orders Management</h1>
             {orders.length === 0 ? <p>No orders found</p> : (
                 <ul>

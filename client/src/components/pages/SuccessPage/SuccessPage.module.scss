@@ -1,8 +1,8 @@
 @import '../../../styles/settings.scss';
 
 .successContainer{
-    color: white;
-    margin-top: 20vh;
+    color: $color-text-bright;
+    margin-top: $succes-container-margin;
     z-index: 10;
     .strongOrderId{
         font-weight: bolder;
@@ -11,13 +11,13 @@
     .button{
         display: block;
         text-align: center;
-        margin-top: 30px;
-        padding: 10px;
-        background: #ff5500;
-        color: white;
-        border-radius: 5px;
+        margin-top: $margin-padding*1.5;
+        padding: $margin-padding/2;
+        background: $main-btns-color;
+        color: $color-text-bright;
+        border-radius: $radius;
         text-decoration: none;
-        font-size: 20px;
+        font-size: $base-size + 6px;
         font-weight: bold;
         width: fit-content;
         margin-left: auto;
@@ -26,6 +26,6 @@
         border: none;
     }
     .button:hover {
-        background: gray;
+        background: $navbar-btn-hover;
     }
 }

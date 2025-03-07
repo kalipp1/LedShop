@@ -1,33 +1,133 @@
 $color-text: #141414;
 $color-text-light: #1d1d1d;
 $color-text-bright: #fff;
-$color-primary: #3498db;
-$color-secondary: #218c74;
-$color-background: #fff;
+$color-primary: #212121;
 
-$color-success: #01916d;
+$color-secondary: #808080;
+$color-background: #000000;
+
+$color-red: #ff0000;
+$logout-hover: #dd3131c9;
+$navbar-btn-hover: #5b5b5b;
+$admin-btn-hover: #2c2c2c;
+$admin-remove-btn-hover: #8b0000;
+
+$main-btns-color: #ff5500;
+$admin-btn: #d6d6d6;
+
+$color-toast-dark: #121212;
+$color-cart-page-loader: #dddddd;
+$color-progress-bar-background: #444444;
+$color-progress-bar-fill-background: #00ff00;
+$color-payment-btn-gradient: #ffffff4d;
+$color-admin-orders-btn-more: #00ff00;
+$color-admin-orders-btn-more-hover: #008700;
+$color-admin-variant-box: #333333;
+$color-admin-add-product-btn: #494949;
+$color-admin-add-product-btn-hover: #008000;
+$color-cart-dropdown-delete-prod-btn: #ffffff33;
+$color-cart-dropdown-quantity-box: #000000b3;
+$color-cart-dropdown-quantity-box-btn-hover: #ffffff33;
+
+$color-success: #00ff00;
 $color-success-back: #00bc8c;
-$color-info: #2b7cb3;
+$color-info: #0000ff;
 $color-info-back: #3598db;
 $color-warning: #f0932b;
 $color-warning-back: #d68529;
 $color-danger: #f0932b;
 $color-danger-back: #d68529;
-$color-error: #EA2027;
+$color-error: #ff0000;
 $color-error-back: #ff5d6c;
 
-$color-textfield-border: #ddd;
-$color-editor-border: #ccc;
-$color-editor-border-light: #ddd;
+$color-input: #ccc;
 
+$gap: 10px;
 $radius: 5px;
+$product-page-image-radius: 8px;
+$payment-btn-radius: 8px;
+$admin-products-dashboard-option-card-radius: 8px;
+$admin-variant-box-radius: 8px;
+$cart-dropdown-radius: 8px;
+$cart-dropdown-quantity-box-btn-radius: 3px;
 $base-size: 14px;
+$get-your-text-margin: 20vh;
+$canel-order-item-list-gap: 5vh;
+$now-text-font-size: 10vh;
+
+$delete-prod-btn-width: 30px;
+
 $transition: all 1s;
 $transition-navbar-links: all 0.2s;
 $transition-cart-dropdown-button: all 0.7s;
 $transition-cart-dropdown: all 0.3s;
+$transition-variant-btn: transform 0.2s ease-in-out;
+$transition-variant-img: border 0.2 ease-in-out;
+$transition-progress-fill: width 0.5s ease-in-out;
+$transition-payment-btn: all 0.3s ease-in-out;
+$transition-payment-btn-after: top 0.4s ease-in-out;
+$loader-cart-animation: spin 1s linear infinite;
 
 $margin-padding: 20px;
+$navbar-margin: 30px 10px;
+$navbar-maxheight: 9vh;
+$margin-progress-container: 15px;
+$admin-variant-box-padding: 15px;
+$admin-add-product-button-margin: 15px;
+$cart-dropdown-padding: 15px;
+$payment-btn-padding: 12px 20px;
+$confirmation-box-margin-block: 10vh;
+$confirmation-box-margin-inline: 40vh;
+$admin-remove-variant-item-margin: 5px 0;
+$admin-remove-product-item-margin: 5px 0;
+$admin-remove-variant-btn-padding: 8px 12px;
+$admin-remove-product-btn-padding: 8px 12px;
+$cart-dropdown-item-padding: 10px 0;
+$cart-dropdown-quantity-box-padding: 5px 10px;
+$cart-dropdown-quantity-box-btn-padding: 5px 10px;
+$succes-container-margin: 20vh;
+$product-page-prod-section-padding: 5vh;
+$product-page-variants-list-margin: 2vh;
+$payment-page-left-side-padding: 2.5vh;
+$cancel-order-form-margin: 10vh;
+$cancel-order-form-btn-margin: 5vh;
+$cancel-order-item-details: 2vh;
+$admin-single-order-page-order-item-margin: 2vh;
+$admin-products-dashboard-container-margin: 10vh auto;
+$admin-orders-page-container-margin: 10vh auto;
+$admin-login-page-container-margin: 10vh auto;
+$admin-clients-page-container-margin: 10vh auto;
+$admin-add-product-page-container-margin: 10vh auto;
+$admin-dashboard-container-margin: 10vh auto;
+$admin-login-page-btn-margin: 2vh;
+$now-text-margin: 2vh;
+$navbar-cart-btn-margin: 5vh;
+
+$navbar-logo-maxwidth: 80px;
+$navbar-logo-maxheight: 80px;
+$cart-dropdown-item-image-width: 80px;
+$cart-dropdown-item-image-height: 80px; 
+$variant-img-width: 50px;
+$variant-img-height: 50px;
+$cart-item-image-width: 120px;
+$cart-item-image-height: 120px;
+$cart-item-image-cart-page-width: 150px;
+$cart-item-image-cart-page-height: 150px;
+$loader-cart-width: 50px;
+$loader-cart-height: 50px;
+$cancel-order-item-image-width: 200px;
+$cancel-order-item-image-height: 200px;
+$admin-single-order-page-item-image-width: 100px;
+$admin-single-order-page-item-image-height: 100px;
+$admin-products-dashboard-option-card-width: 250px;
+$admin-products-dashboard-option-card-height: 100px;
+$product-carousel-img-max-width: 100vh;
+$product-carousel-img-max-height: 50vh;
+$cart-dropdown-width: 280px;
+$cart-dropdown-items-max-height: 200px;
+
+$cart-dropdown-box-shadow: 0 4px 8px #00000033;
+$cart-dropdown-item-border: 1px solid #ffffff33;
 
 @mixin p-el($element) {
   &:#{$element}, &::#{$element} {

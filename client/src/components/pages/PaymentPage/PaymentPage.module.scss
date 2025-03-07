@@ -1,7 +1,7 @@
 @import '../../../styles/settings.scss';
 
 .allPage{
-    color: white;
+    color: $color-text-bright;
     .finishOrderBox{
         display: flex;
         flex-direction: row;
@@ -14,23 +14,23 @@
         overflow: scroll;
     }
     .cartItemImage{
-        width: 120px;
-        height: 120px;
+        width: $cart-item-image-width;
+        height: $cart-item-image-height;
     }
     .cartItem{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid $color-text-bright;
     }
     .leftSide{
-        padding-top: 2.5vh;
+        padding-top: $payment-page-left-side-padding;
     }
     .cartItemDetails{
         position: relative;
         z-index: 2;
-        margin-top: 20px;
-        margin-left: 80px;
+        margin-top: $margin-padding;
+        margin-left: $margin-padding*4;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -43,13 +43,13 @@
     .goBackToCart{
             display: block;
             text-align: center;
-            margin-top: 30px;
-            padding: 10px;
-            background: #ff5500;
-            color: white;
-            border-radius: 5px;
+            margin-top: $margin-padding*1.5;
+            padding: $margin-padding/2;
+            background: $main-btns-color;
+            color: $color-text-bright;
+            border-radius: $radius;
             text-decoration: none;
-            font-size: 10px;
+            font-size: $base-size - 4px;
             font-weight: bold;
             width: fit-content;
             margin-left: auto;
@@ -61,11 +61,11 @@
         }
         
     .goBackToCart:hover {
-        background: gray;
+        background: $navbar-btn-hover;
     }
     .isNotRequired{
-        color: gray;
-        font-size: 10px;
+        color: $color-secondary;
+        font-size: $base-size - 4px;
         margin: 0;
     }
 }

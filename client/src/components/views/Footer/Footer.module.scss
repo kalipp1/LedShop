@@ -3,49 +3,49 @@
 .footer {
     display: flex;
     justify-content: space-between;
-    background-color: gray;
-    padding: 10px;
+    background-color: $color-primary;
+    padding: $margin-padding/2;
     h1 {
         font-size: $base-size;
-        color: white;
+        color: $color-text-bright;
     }
     a {
         font-size: $base-size * 1.5;
-        color: white;
+        color: $color-text-bright;
         text-decoration: none;
     }
     .button{
         text-align: center;
         margin: $margin-padding;
-        padding: 10px;
-        background: #ff5500;
-        color: white;
-        border-radius: 5px;
+        padding: $margin-padding/2;
+        background: $main-btns-color;
+        color: $color-text-bright;
+        border-radius: $radius;
         text-decoration: none;
-        font-size: 10px;
+        font-size: $base-size - 4px;
         font-weight: bold;
         width: fit-content;
         transition: $transition-cart-dropdown;
         border: none;
     }
     .button:hover {
-        background: rgb(42, 42, 42);
+        background: $color-primary;
     }
     .buttonAdmin{
         text-align: center;
         margin: $margin-padding;
-        padding: 10px;
-        background: rgb(214, 214, 214);
-        color: white;
-        border-radius: 5px;
+        padding: $margin-padding/2;
+        background: $admin-btn;
+        color: $color-text-bright;
+        border-radius: $radius;
         text-decoration: none;
-        font-size: 10px;
+        font-size: $base-size - 4px;
         font-weight: bold;
         width: fit-content;
         transition: $transition-cart-dropdown;
         border: none;
     }
     .buttonAdmin:hover {
-        background: rgb(42, 42, 42);
+        background: $admin-btn-hover; 
     }
 }

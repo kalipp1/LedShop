@@ -2,12 +2,12 @@
 
 .adminLoginContainer {
     max-width: 400px;
-    margin: 10vh auto;
+    margin: $admin-login-page-container-margin;
     padding: $margin-padding;
-    background: #2c2c2c;
+    background: $color-primary;
     border-radius: $radius*2;
     text-align: center;
-    color: white;
+    color: $color-text-bright;
     position: relative;
 }
 
@@ -20,5 +20,5 @@
 
 .button {
     width: 100%;
-    margin-top: 2vh;
+    margin-top: $admin-login-page-btn-margin;
 }

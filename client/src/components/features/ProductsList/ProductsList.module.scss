@@ -1,22 +1,22 @@
 @import '../../../styles/settings.scss';
 
 .getYour{
-    margin-top: 20vh;   
-    color: white;
+    margin-top: $get-your-text-margin;   
+    color: $color-text-bright;
     font-weight: bold;
     .firstHalf{
         text-shadow: 
-        0 0 5px rgba(255, 255, 255, 0.8), 
-        0 0 10px rgba(255, 255, 255, 0.6), 
-        0 0 20px rgba(255, 0, 0, 0.6),
-        0 0 30px rgba(255, 0, 0, 0.8),
-        0 0 40px rgba(255, 0, 0, 0.9),
-        0 0 50px rgba(255, 0, 0, 1);   
+        0 0 5px #ffffffcc, 
+        0 0 10px #ffffff99, 
+        0 0 20px #ff000099,
+        0 0 30px #ff0000cc,
+        0 0 40px #ff0000e6,
+        0 0 50px #ff0000;   
     }
     .now{
-        color: red;
-        font-size: 10vh;
+        color: $color-red;
+        font-size: $now-text-font-size;
         position: absolute;
-        margin-left: 2vh;
+        margin-left: $now-text-margin;
     }
 }
