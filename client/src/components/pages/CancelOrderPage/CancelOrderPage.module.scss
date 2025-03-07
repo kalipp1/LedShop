@@ -81,3 +81,34 @@
         }
     }
 }
+
+@media (max-width: 600px) {
+    .cancelOrderContainer {
+        h1{
+            font-size: $base-size + 4px;
+        }
+        h2{
+            font-size: $base-size + 3px;
+        }
+        h3{
+            font-size: $base-size + 2px;
+        }
+        h4{
+            font-size: $base-size - 2px;
+        }
+        .formOrder{
+            margin: $margin-padding;
+            position: relative;
+        }
+        .formOrder label{
+            font-size: $base-size + 6px;
+        }
+        .button{
+            font-size: $base-size + 4px;
+        }
+        .confirmationBox{
+            margin-inline: 0;
+            margin-block: 0;
+        }
+    }
+}

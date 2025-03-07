@@ -1,1 +1,9 @@
 @import '../../../styles/settings.scss';
+
+
+@media (max-width: 600px) {
+    .cardImage{
+        width: $product-card-image-rwd-width;
+        height: $product-card-image-rwd-height;
+    }
+}

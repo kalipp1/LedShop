@@ -90,3 +90,20 @@
         }
     }
 }
+@media (max-width: 600px) {
+    .ordersContainer{
+        h1{
+            font-size: $base-size*2;
+        }
+        .orderText{
+            font-size: $base-size - 4px;
+            margin-inline: $margin-padding/4;
+        }
+        .buttonMore{
+            font-size: $base-size - 4px;
+        }
+        .buttonRemove{
+            font-size: $base-size - 4px;
+        }
+    }
+}

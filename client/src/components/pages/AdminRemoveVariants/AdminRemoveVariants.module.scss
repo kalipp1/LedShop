@@ -53,3 +53,15 @@ h1 {
         font-size: $base-size*2;
     }
 }
+
+@media (max-width: 600px) {
+    .variantsContainer h1 {
+        font-size: $base-size*1.7;
+    }
+    .variantsList {
+        margin-top: $margin-padding*3;
+    }
+    .variantItem {
+        font-size: $base-size;
+    }
+}

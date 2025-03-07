@@ -55,3 +55,18 @@
         font-size: $base-size + 6px;
     }
 }
+
+@media (max-width: 600px) {
+    .footer {
+        h1 {
+            font-size: $base-size/2;
+        }  
+        .buttonCancel{
+            font-size: $base-size/2;
+        }
+        .buttonAdmin{
+            margin-top: $margin-padding/2;
+            font-size: 0;
+        }
+    }
+}

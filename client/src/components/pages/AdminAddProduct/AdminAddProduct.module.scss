@@ -91,3 +91,15 @@ button {
         font-size: $base-size*3;
     }
 }
+@media (max-width: 600px) {
+    label {
+        font-size: $base-size + 6px;
+    }
+    .addProductContainer h1{
+        font-size: $base-size*2;
+    }
+    .addProductContainer h2{
+        margin-block: $margin-padding/2;
+        font-size: $base-size*2;
+    }
+}

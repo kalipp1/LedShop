@@ -30,3 +30,16 @@
         }
     }
 }
+
+@media (max-width: 600px) {
+    .getYour{
+        margin-top: $get-your-text-margin/2;
+        font-size: $base-size;
+        margin-left: 2vh;
+        .now{
+            font-size: $now-text-font-size /2.5;
+            top: 30%;
+            margin-left: 0;
+        }
+    }
+}

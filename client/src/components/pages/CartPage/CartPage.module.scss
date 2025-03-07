@@ -192,3 +192,25 @@
    }
 }
 
+@media (max-width: 600px) {
+    .allPage{
+        .CartPage{
+            display: flex;
+            flex-direction: column;
+        }
+        .cartItems{
+            width: 100%;
+        }
+        .priceBox{
+            margin-left: 0;
+        }
+        .continueShopping{
+            margin-left: $margin-padding;
+            font-size: $base-size;
+            position: absolute;
+            top: $cart-page-continue-shopping-btn-rwd;
+            bottom: auto;
+        }
+    }
+}
+

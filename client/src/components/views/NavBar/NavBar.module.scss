@@ -68,3 +68,28 @@
          }
     }
 }
+
+@media (max-width: 600px) {
+    .navbar{
+        .nav a.link{
+            font-size: $base-size - 5px;
+            margin: $margin-padding;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo img{
+            max-width: $navbar-logo-maxwidth -30px;
+            max-height: $navbar-logo-maxheight - 30px;
+        }
+        .cartButton{
+            font-size: $base-size;
+            margin: $margin-padding;
+            text-align: center;
+        }
+        .logOutButton{
+            font-size: $base-size - 5px;
+            margin: $margin-padding;
+        }
+    }
+}

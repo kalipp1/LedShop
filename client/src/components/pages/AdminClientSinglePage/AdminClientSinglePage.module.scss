@@ -18,10 +18,28 @@
 
 @media (max-width: 1025px) {
     .clientPageContainer{
+        margin: $margin-padding;
         font-size: $base-size*2;
-        padding: $margin-padding*1.5;
+        padding: $margin-padding;
     }
     .clientPageContainer h1{
         margin-top: $margin-padding*6;
+    }
+}
+
+@media (max-width: 600px) {
+    .clientPageContainer{
+        margin-left: 0;
+        margin-right: 0;
+        font-size: $base-size;
+        padding: $margin-padding*1.5;
+    }
+    .clientPageContainer h1{
+        font-size: $base-size + 6px;
+        margin-top: $margin-padding;
+    }
+    .clientPageContainer h3{
+        font-size: $base-size + 2px;
+        margin-top: $margin-padding;
     }
 }

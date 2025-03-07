@@ -145,3 +145,9 @@
         top: 125px;
     }
 }
+@media (max-width: 600px) {
+    .cartDropdown {
+        position: absolute;
+        top: 9vh;
+    }
+}

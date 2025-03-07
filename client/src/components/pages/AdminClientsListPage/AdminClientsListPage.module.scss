@@ -56,7 +56,20 @@
             margin-left: $margin-padding;
         }
         .buttonMore{
-            font-size: $base-size*2;
+            font-size: $base-size * 1.5;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .clientsContainer{
+        .clientText{
+            font-size: $base-size - 4px;
+            margin-left: $margin-padding/4;
+        }
+        .buttonMore{
+            font-size: $base-size* 0.8;
+            padding: $margin-padding/4;
         }
     }
 }

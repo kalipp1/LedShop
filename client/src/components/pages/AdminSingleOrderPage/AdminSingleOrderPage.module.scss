@@ -36,3 +36,13 @@
         }
     }
 }
+@media (max-width: 600px) {
+    .allPage{
+        .orderDetails{
+            margin-top: $margin-padding*2;
+        }
+        p{
+            font-size: $base-size;
+        }
+    }
+}

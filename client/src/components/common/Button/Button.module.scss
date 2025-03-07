@@ -46,3 +46,13 @@
         top: -1%;
     }
 }
+@media (max-width: 600px) {
+    .addTo {
+        padding: $margin-padding/2;
+        font-size: $base-size + 6px;
+    }
+    .backButton{
+        font-size: $base-size + 2px;
+        top: -0.2%;
+    }
+}

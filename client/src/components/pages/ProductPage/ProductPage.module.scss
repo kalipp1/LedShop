@@ -112,3 +112,21 @@
     }
    }
 }
+
+@media (max-width: 600px) {
+    .allPage{
+        display: flex;
+        flex-direction: column;
+        .prodSection{
+            display: flex;
+            flex-direction: column;
+        }
+        .variantImage {
+            width: $variant-img-width/1.1;
+            height: $variant-img-height/1.1;
+        }
+        .button {
+            margin-top: $margin-padding * 3;
+        }
+    }
+}

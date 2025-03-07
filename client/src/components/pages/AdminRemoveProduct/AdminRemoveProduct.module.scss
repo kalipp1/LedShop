@@ -70,3 +70,18 @@ h1 {
         font-size: $base-size*1.5;
     }
 }
+
+@media (max-width: 600px) {
+    .productsContainer{
+      padding: 0;
+    }
+    .productsContainer h1{
+        font-size: $base-size * 1.5;
+    }
+    .productList {
+        margin-top: $margin-padding*2.5;
+    }
+    .productItem {
+        font-size: $base-size*0.7;
+    }
+}

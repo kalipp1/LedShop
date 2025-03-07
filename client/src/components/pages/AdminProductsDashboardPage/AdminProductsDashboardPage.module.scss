@@ -39,11 +39,17 @@
 
 @media (max-width: 1025px) {
     .options{
-        margin-top: $margin-padding*1.5;
+        margin-top: $margin-padding*2.5;
     }
     .optionCard{
         font-size: $base-size*2;
         width: $admin-products-dashboard-option-card-width+50px;
         height: $admin-products-dashboard-option-card-height+20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .options{
+        margin-top: $margin-padding;
     }
 }

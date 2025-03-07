@@ -70,3 +70,21 @@
     }
 }
 
+@media (max-width: 600px) {
+    .allPage{
+        .finishOrderBox{
+            display: flex;
+            flex-direction: column;
+        }
+        .orderDisplayWithTotalPrice{
+            width: 100%;
+        }
+        .goBackToCart{
+            top: $payment-page-go-back-to-cart-btn-top-rwd;
+            bottom: auto;
+            position: absolute;
+            left: $payment-page-go-back-to-cart-btn-left-rwd;
+        }
+    }
+}
+
