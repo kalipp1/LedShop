@@ -14,7 +14,7 @@
         color: $color-text-bright;
         text-decoration: none;
     }
-    .button{
+    .buttonCancel{
         text-align: center;
         margin: $margin-padding;
         padding: $margin-padding/2;
@@ -28,7 +28,7 @@
         transition: $transition-cart-dropdown;
         border: none;
     }
-    .button:hover {
+    .buttonCancel:hover {
         background: $color-primary;
     }
     .buttonAdmin{
@@ -47,5 +47,11 @@
     }
     .buttonAdmin:hover {
         background: $admin-btn-hover; 
+    }
+}
+
+@media (max-width: 1025px) {
+    .footer .buttonCancel{
+        font-size: $base-size + 6px;
     }
 }

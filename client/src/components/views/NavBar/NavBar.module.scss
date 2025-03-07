@@ -54,3 +54,12 @@
         transition: $transition-navbar-links;
     }
 }
+
+@media (max-width: 1025px) {
+    .nav a.link{
+       font-size: $base-size *2;
+    }
+    .cartButton{
+        font-size: $base-size *2;
+    }
+}

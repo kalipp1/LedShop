@@ -138,3 +138,10 @@
         background: $color-cart-dropdown-quantity-box-btn-hover;
     }
 }
+
+@media (max-width: 1025px) {
+    .cartDropdown {
+        position: relative;
+        top: 125px;
+    }
+}

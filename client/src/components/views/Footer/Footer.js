@@ -20,7 +20,7 @@ const Footer = () => {
         </h1>
         <h1>
             {!isOnCancelOrderOrAdmin && (
-              <Link to="/cancelOrder" className={styles.button}>Cancel your order</Link>
+              <Link to="/cancelOrder" className={styles.buttonCancel}>Cancel your order</Link>
             )}
             <a href='#'><FontAwesomeIcon icon={faSquareFacebook} /> </a>
             <a href='#'><FontAwesomeIcon icon={faSquareInstagram} /> </a>

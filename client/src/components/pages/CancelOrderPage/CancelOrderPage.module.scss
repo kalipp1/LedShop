@@ -65,3 +65,19 @@
         margin-top: $margin-padding * 2;
     }
 }
+
+@media (max-width: 1025px) {
+    .cancelOrderContainer {
+        .formOrder{
+            margin-top: $margin-padding;
+            position: relative;
+        }
+        .button{
+            font-size: $base-size*2;
+        }
+        .confirmationBox{
+            margin-inline: 0;
+            margin-block: 0;
+        }
+    }
+}

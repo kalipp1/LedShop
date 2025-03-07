@@ -20,3 +20,13 @@
         margin-left: $now-text-margin;
     }
 }
+
+@media (max-width: 1025px) {
+    .getYour{
+        font-size: $base-size *2;
+        margin-left: 2vh;
+        .now{
+            font-size: $now-text-font-size /2;
+        }
+    }
+}

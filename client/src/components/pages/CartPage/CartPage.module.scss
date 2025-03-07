@@ -179,3 +179,16 @@
     }
 }
 
+@media (max-width: 1025px) {
+   .allPage{
+    .cartItem{
+        position: relative;
+    }
+    .continueShopping{
+        margin-left: $margin-padding*2;
+        font-size: $base-size + 6px;
+        left: 0%;
+    }
+   }
+}
+
