@@ -36,3 +36,14 @@
 .optionCard:hover {
     background: $color-secondary;
 }
+
+@media (max-width: 1025px) {
+    .dashboardContainer {
+        max-width: 900px;
+    }
+    .optionCard {
+        font-size: $base-size*2;
+        width: $admin-products-dashboard-option-card-width+70px;
+        height: $admin-products-dashboard-option-card-height+50px;
+    }
+}

@@ -54,3 +54,19 @@ h1 {
     background-color: $navbar-btn-hover;
     transition: $transition-cart-dropdown;
 }
+
+@media (max-width: 1025px) {
+    .productsContainer{
+        max-width: 900px;
+    }
+    .productsContainer h1{
+        font-size: $base-size*4;
+    }
+    .productList {
+        margin-top: $margin-padding*2.5;
+        max-width: 900px;
+    }
+    .productItem {
+        font-size: $base-size*1.5;
+    }
+}

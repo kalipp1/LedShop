@@ -15,3 +15,13 @@
         list-style: none;
     }
 }
+
+@media (max-width: 1025px) {
+    .clientPageContainer{
+        font-size: $base-size*2;
+        padding: $margin-padding*1.5;
+    }
+    .clientPageContainer h1{
+        margin-top: $margin-padding*6;
+    }
+}

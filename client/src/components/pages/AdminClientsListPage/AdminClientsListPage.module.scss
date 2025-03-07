@@ -21,7 +21,7 @@
         color: $color-text-bright;
         font-weight: bolder;
     }
-    .orderText{
+    .clientText{
         text-align: center;
     }
     h1{
@@ -46,5 +46,17 @@
     }
     .buttonMore:hover {
         background: $color-admin-orders-btn-more-hover;
+    }
+}
+
+@media (max-width: 1025px) {
+    .clientsContainer{
+        .clientText{
+            font-size: $base-size*1.5;
+            margin-left: $margin-padding;
+        }
+        .buttonMore{
+            font-size: $base-size*2;
+        }
     }
 }

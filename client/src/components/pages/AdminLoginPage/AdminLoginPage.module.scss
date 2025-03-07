@@ -22,3 +22,15 @@
     width: 100%;
     margin-top: $admin-login-page-btn-margin;
 }
+
+@media (max-width: 1025px) {
+    .adminLoginContainer {
+        max-width: 500px;
+        h2{
+            font-size: $base-size*3;
+        }
+        label{
+            font-size: $base-size*2;
+        }
+    }
+}

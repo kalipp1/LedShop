@@ -24,3 +24,15 @@
         }
     }
 }
+@media (max-width: 1025px) {
+    .allPage{
+        .itemImage{
+            width: $admin-single-order-page-item-image-width*1.5;
+            height: $admin-single-order-page-item-image-height*1.5;
+            margin-block: $margin-padding;
+        }
+        p{
+            font-size: $base-size*2;
+        }
+    }
+}

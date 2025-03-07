@@ -56,10 +56,15 @@
 }
 
 @media (max-width: 1025px) {
-    .nav a.link{
-       font-size: $base-size *2;
-    }
-    .cartButton{
-        font-size: $base-size *2;
+    .navbar{
+        .nav a.link{
+            font-size: $base-size *2;
+         }
+         .cartButton{
+             font-size: $base-size *2;
+         }
+         .logOutButton{
+             font-size: $base-size+10px;
+         }
     }
 }

@@ -44,3 +44,12 @@ h1 {
 .buttonRemove:hover {
     background: $admin-remove-btn-hover;
 }
+
+@media (max-width: 1025px) {
+    .variantsList {
+        margin-top: $margin-padding*3;
+    }
+    .variantItem {
+        font-size: $base-size*2;
+    }
+}

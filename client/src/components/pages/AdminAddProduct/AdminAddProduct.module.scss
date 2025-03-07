@@ -78,3 +78,16 @@ button {
 .addButton {
     background: $color-admin-add-product-btn;
 }
+
+@media (max-width: 1025px) {
+    label {
+        font-size: $base-size *2;
+    }
+    .addProductContainer h1{
+        font-size: $base-size*3.5;
+    }
+    .addProductContainer h2{
+        margin-block: $margin-padding/2;
+        font-size: $base-size*3;
+    }
+}

@@ -72,3 +72,21 @@
         background: $admin-remove-btn-hover;
     }
 }
+
+@media (max-width: 1025px) {
+    .ordersContainer{
+        h1{
+            font-size: $base-size*4;
+        }
+        .orderText{
+            font-size: $base-size*2;
+            margin-inline: $margin-padding/2;
+        }
+        .buttonMore{
+            font-size: $base-size*2;
+        }
+        .buttonRemove{
+            font-size: $base-size*2;
+        }
+    }
+}

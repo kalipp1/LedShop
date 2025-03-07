@@ -39,3 +39,10 @@
     left: 1%;
     top: -2%;
 }
+
+@media (max-width: 1025px) {    
+    .backButton{
+        font-size: $base-size *2.5;
+        top: -1%;
+    }
+}
