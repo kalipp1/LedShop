@@ -98,3 +98,26 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 # LedShop
+
+Link do opublikowanej strony: 
+https://ledshop.onrender.com
+
+https://github.com/kalipp1/LedShop/commit/40bf2c7a8047eaa5801a5a4a7e10083a5dbbb820
+
+# Opis Strony
+
+Jest to prosta strona stworzona w 3 tygodnie. Dodana została prosta strona sklepu internetowego z oświetleniem LED. Funkcje dodawania do koszyka, widok pojedynczego produktu, lista produktów, strona koszyka, oraz strona płatności, dodana jest rowniez podstrona anulowania zamówienia poprzez wpisanie numeru zamówienia.
+W stópce obok małego napisu LedShopProject jest dodany przycisk który prowadzi do panelu admina. W oryginalnej wersji przycisk zostanie usuniety jest on dodany aby wygodniej się posługiwać i nie musieć wpisywać linku do logowania 
+login admina: admin
+hasło admina: admin123
+
+Jest stworzony prosty i przejrzysty interfejs dla admina w którym mozna sprawdzić zamówienia oraz je usunąć, sprawdzić klienta oraz jego zamówienia, dodać produkt i jego varianty kolorystcyzne, usunąć produkt i usunąć jego varianty kolorystyczne
+
+Aby dodać produkt potrzebny nam jest id jednej z 4 dodanych kategorii w przyszłości przewidziana jest osobna sekcja w panelu admina do dodawnia nowych kategorii , narazie mozna skorzystac z 4 kategorii jakimi są:
+
+Paski LED (Strips): { id: 'f930e19d-a622-4bdd-8ba6-dbbf98124e21'},
+Żarówki LED (Bulbs): { id: '8e5282b1-a7b6-4172-b88e-eddd78e6f62f'},
+Stojące lampy LED w klimacie neonu: (Neon standing lights): { id: 'dcd8d654-0b9a-48f0-a19c-9aa9c45c968a'},
+Panele świetlne w kształcie plastru miodu(Led Hex Panels): { id: '1712608e-efee-4f1d-8750-ab841bc6a938'},
+
+Aby dodać zdjęcia nalezy je nazwać przedrostek led-(np. bulb, strip, neon-stand, led-hex)-color(main, green, blue itp)
