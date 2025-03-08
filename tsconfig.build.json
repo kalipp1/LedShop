@@ -1,6 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "exclude": ["node_modules", "test", "dist", "**/*spec.ts", "prisma", "utils"],
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "removeComments": true,
+    "module": "CommonJS"
+  },
   "include": [
     "src/**/*.ts",
   ],
