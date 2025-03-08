@@ -64,7 +64,7 @@ const AdminAddProduct = () => {
             for (const pair of formData.entries()) {
                 console.log(pair[0], pair[1]);
             }
-            const res = await fetch(`${API_URL}/api/products`, {
+            const res = await fetch(`${API_URL}/products`, {
                 method: "POST",
                 headers: { Authorization: `Bearer ${token}` },
                 body: formData,

@@ -23,7 +23,7 @@ export const loadClientsRequest = () => {
         dispatch(startRequest());
         try {
             const token = localStorage.getItem("token");
-            let res = await axios.get(`${API_URL}/api/clients`, {
+            let res = await axios.get(`${API_URL}/clients`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             dispatch(loadClients(res.data));
@@ -38,7 +38,7 @@ export const loadClientByIdRequest = (clientId) => {
         dispatch(startRequest());
         try {
             const token = localStorage.getItem("token");
-            let res = await axios.get(`${API_URL}/api/clients/${clientId}`, {
+            let res = await axios.get(`${API_URL}/clients/${clientId}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             dispatch(getClient(res.data));

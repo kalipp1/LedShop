@@ -15,7 +15,7 @@ const AdminRemoveVariants = () => {
         const fetchVariants = async () => {
             const token = localStorage.getItem("token");
             try {
-                const res = await fetch(`${API_URL}/api/products/${productId}`, {
+                const res = await fetch(`${API_URL}/products/${productId}`, {
                     method: "GET",
                     headers: { Authorization: `Bearer ${token}` },
                 });
@@ -36,7 +36,7 @@ const AdminRemoveVariants = () => {
         const token = localStorage.getItem("token");
 
         try {
-            const res = await fetch(`${API_URL}/api/products/${productId}/variants/${variantId}`, {
+            const res = await fetch(`${API_URL}/products/${productId}/variants/${variantId}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` },
             });

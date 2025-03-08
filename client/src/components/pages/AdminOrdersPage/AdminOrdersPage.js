@@ -13,7 +13,7 @@ const AdminOrdersPage = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             const token = localStorage.getItem("token");
-            const res = await fetch(`${API_URL}/api/orders`, {
+            const res = await fetch(`${API_URL}/orders`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 
@@ -35,7 +35,7 @@ const AdminOrdersPage = () => {
         const token = localStorage.getItem("token");
 
         try {
-            const res = await fetch(`${API_URL}/api/orders/${id}`, {
+            const res = await fetch(`${API_URL}/orders/${id}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` },
             });

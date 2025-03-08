@@ -21,10 +21,11 @@ export const removeProduct = id => ({ type: REMOVE_PRODUCT, payload: id });
 export const addProduct = product => ({ type: ADD_PRODUCT, payload: product });
 
 export const loadProductsRequest = () => {
+    console.log("🚀 API_URL:", API_URL);
     return async dispatch => {
         dispatch(startRequest());
         try {
-            let res = await axios.get(`${API_URL}/api/products`);
+            let res = await axios.get(`${API_URL}/products`);
             console.log("RESPONSE FROM API:", res.data);
             dispatch(loadProducts(res.data));
         } catch (err) {
@@ -37,7 +38,7 @@ export const removeProductRequest = (productId) => async dispatch => {
     try {
         const token = localStorage.getItem("token");
 
-        const res = await axios.delete(`${API_URL}/api/products/${productId}`, {
+        const res = await axios.delete(`${API_URL}/products/${productId}`, {
             headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -53,7 +54,7 @@ export const addProductRequest = (productData) => async dispatch => {
     try {
         const token = localStorage.getItem("token");
 
-        const res = await axios.post(`${API_URL}/api/products`, productData, {
+        const res = await axios.post(`${API_URL}/products`, productData, {
             headers: { 
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "multipart/form-data"

@@ -24,7 +24,7 @@ export const cancelOrder = (orderId) => ({ type: CANCEL_ORDER, payload: orderId 
 
 export const loadOrderByIdRequest = (orderId) => async (dispatch) => {
     try {
-        let res = await axios.get(`${API_URL}/api/orders/${orderId}`, {
+        let res = await axios.get(`${API_URL}/orders/${orderId}`, {
             headers: { "Content-Type": "application/json" }
         });
         dispatch(getOrder(res.data));
@@ -36,7 +36,7 @@ export const loadOrderByIdRequest = (orderId) => async (dispatch) => {
 export const createOrderRequest = (orderData) => async (dispatch) => {
     try {
         dispatch(startRequest());
-        const res = await axios.post(`${API_URL}/api/orders`, orderData);
+        const res = await axios.post(`${API_URL}/orders`, orderData);
         dispatch(createOrder(res.data));
     } catch (error) {
         console.error("Error creating order:", error);
@@ -48,7 +48,7 @@ export const loadOrdersRequest = () => {
         dispatch(startRequest());
         try {
             const token = localStorage.getItem('token');
-            let res = await axios.get(`${API_URL}/api/orders`, {
+            let res = await axios.get(`${API_URL}/orders`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             dispatch(loadOrders(res.data));
@@ -60,7 +60,7 @@ export const loadOrdersRequest = () => {
 
 export const cancelOrderRequest = (orderId) => async (dispatch) => {
     try {
-        await axios.delete(`${API_URL}/api/orders/${orderId}`, {
+        await axios.delete(`${API_URL}/orders/${orderId}`, {
             headers: { "Content-Type": "application/json" }
         });
         dispatch(cancelOrder(orderId));

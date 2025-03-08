@@ -13,9 +13,17 @@ import { OrdersModule } from './orders/orders.module';
 import { ClientsModule } from './clients/clients.module';
 import { AdminModule } from './admin/admin.module';
 import { AuthMiddleware } from './utils/authMiddleware';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
-  imports: [ProductsModule, OrdersModule, ClientsModule, AdminModule],
+  imports: [ServeStaticModule.forRoot({
+    rootPath: join(__dirname, '..', 'client', 'build'),
+  }),
+  ServeStaticModule.forRoot({
+    rootPath: join(__dirname, '..', 'public'),
+    serveRoot: '/uploads',
+  }), ProductsModule, OrdersModule, ClientsModule, AdminModule],
   controllers: [AppController],
   providers: [AppService, PrismaService],
 })
